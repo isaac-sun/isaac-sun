@@ -1,4 +1,4 @@
-### Welcome to Isaac SUN's GitHub Profile
+### Welcome to Isaac SUN's GitHub Profile👏 ###
 
 - 👋 Hi, I’m **@isaac-sun**
 - I'm from Shandong, China
@@ -7,7 +7,7 @@
 - 😄 Pronouns: he/him
 - ⚡ Fun fact: I love music and am a JayChou and Taylor Swift fan
 
-- N.B. I'm currently looking for a summer internship. Feel free to contact at me and I'll sent you my resume for further communication.
+- N.B. I'm currently looking for a summer internship. Feel free to contact at me and I'll send you my resume for further communication.
 
 <!---
 isaac-sun/isaac-sun is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
