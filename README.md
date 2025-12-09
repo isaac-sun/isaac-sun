@@ -4,7 +4,7 @@ You can edit all the content below to fit your own style.
 -->
 
 <h1 align="center">Hi 👋, I'm Yi'nan SUN</h1>
-<h3 align="center">A undergraduate student from China</h3>
+<h3 align="center">An undergraduate student from China</h3>
 
 <p align="center">
   <!-- 简短一句话介绍，比如：First-year CS student @ UNNC · Interested in distributed systems & AI -->
@@ -54,19 +54,28 @@ You can edit all the content below to fit your own style.
 
 <!-- 这些统计图是常见模板，等你愿意折腾的时候可以把用户名换成你自己的 -->
 
+<!-- GitHub Stats -->
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=isaac-sun&show_icons=true&theme=default" alt="GitHub stats" />
+  <img src="https://github-readme-stats.vercel.app/api?username=isaac-sun&show_icons=true&theme=default" />
 </p>
 
+<!-- GitHub Streak (new link!) -->
 <p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=isaac-sun" alt="GitHub streak" />
+  <img src="https://streak-stats.demolab.com?user=isaac-sun" />
 </p>
 
-<!-- 语言统计 -->
+<!-- Top Languages -->
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=isaac-sun&layout=compact" alt="Top Langs" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=isaac-sun&layout=compact" />
 </p>
 
+## 📊 GitHub Stats
+
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=isaac-sun&show_icons=true&theme=default)
+
+![GitHub Streak](https://streak-stats.demolab.com?user=isaac-sun)
+
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=isaac-sun&layout=compact)
 ---
 
 ### 🤝 Connect with me
