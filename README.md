@@ -1,15 +1,85 @@
-### Welcome to Isaac SUN's GitHub Profile👏 ###
+<!--
+👋 Hi! Thanks for checking my profile README.
+You can edit all the content below to fit your own style.
+-->
 
-- 👋 Hi, I’m **@isaac-sun**
-- I'm from Shandong, China
-- 🌱 I’m currently finishing my bachelor's degree of *Computer Science with Artficial Intelligence* at the **University of Nottingham Ningbo China**
-- 📫 How to reach me? By email **yinan.sun86@outlook.com** Also, you can follow my **Instagram** via the URL in my Profile Page.
-- 😄 Pronouns: he/him
-- ⚡ Fun fact: I love music and am a JayChou and Taylor Swift fan
+<h1 align="center">Hi 👋, I'm Yi'nan SUN</h1>
+<h3 align="center">A undergraduate student from China</h3>
 
-- N.B. I'm currently looking for a summer internship. Feel free to contact at me and I'll send you my resume for further communication.
+<p align="center">
+  <!-- 简短一句话介绍，比如：First-year CS student @ UNNC · Interested in distributed systems & AI -->
+  Passionate about COMPUTER SCIENCE · Currently learning federated learning (FL) · Love building full stack projects
+</p>
 
-<!---
-isaac-sun/isaac-sun is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+---
+
+### 🧑‍💻 About me
+
+- 🎓 I’m currently studying **Computer Science wiith Artificial Intelligence@University of Nottingham Ningbo China**
+- 🌱 I’m currently learning **C, Python, Vue, SQL, Nand2Tetris, Linear Algebra**  
+- 💡 I enjoy **WHAT_YOU_LIKE building full-stack projects**
+- 💼 I’m interested in **research**
+- 📷 Outside of coding, I like **photography, debating, cross-cultural communication**  
+- 📫 How to reach me: **scyys25@nottingham.edu.cn**
+
+---
+
+### 🛠️ Tech Stack
+
+<!-- 你会什么就写什么，不会的就删掉 -->
+
+**Languages**
+
+- C · Python · JavaScript · SQL · Markdown · LaTeX
+
+**Web & Frameworks**
+
+- HTML · CSS · Vue.js · React 
+
+**Tools & Platforms**
+
+- Git · GitHub · VS Code · Linux / Ubuntu · Docker
+- SQLite  
+
+**Currently learning**
+
+- Data Structures & Algorithms  
+- Database and Interfaces  
+- Computer Fundamentals  
+
+---
+
+
+### 📊 GitHub Stats
+
+<!-- 这些统计图是常见模板，等你愿意折腾的时候可以把用户名换成你自己的 -->
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=isaac-sun&show_icons=true&theme=default" alt="GitHub stats" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=isaac-sun" alt="GitHub streak" />
+</p>
+
+<!-- 语言统计 -->
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=isaac-sun&layout=compact" alt="Top Langs" />
+</p>
+
+---
+
+### 🤝 Connect with me
+
+- 📧 Email: scyys25@nottingham.edu.cn  
+- 💼 LinkedIn: [Yi'nan SUN](https://www.linkedin.com/in/isaac-sun/)  
+<!--- 🌐 Personal site / blog (if any)-->
+
+---
+
+<!-- Optionally add a little footer -->
+
+<p align="center">
+  Thanks for visiting 💫 <br/>
+  Feel free to check out my repos and leave a ⭐ if you find something interesting!
+</p>
