@@ -17,8 +17,8 @@ You can edit all the content below to fit your own style.
 
 - 🎓 I’m currently studying **Computer Science wiith Artificial Intelligence@University of Nottingham Ningbo China**
 - 🌱 I’m currently learning **C, Python, Vue, SQL, Nand2Tetris, Linear Algebra**  
-- 💡 I enjoy **WHAT_YOU_LIKE building full-stack projects**
-- 💼 I’m interested in **research**
+- 💡 I enjoy **building full-stack projects**
+- 💼 I’m interested in **Federated Learning**
 - 📷 Outside of coding, I like **photography, debating, cross-cultural communication**  
 - 📫 How to reach me: **scyys25@nottingham.edu.cn**
 
