@@ -3,7 +3,7 @@
 You can edit all the content below to fit your own style.
 -->
 
-<h1 align="center">Hi 👋, I'm Yi'nan SUN</h1>
+<h1 align="center">Hi 👋, I'm Yinan SUN</h1>
 <h3 align="center">An undergraduate student from China</h3>
 
 <p align="center">
