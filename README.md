@@ -58,13 +58,6 @@ Current deep dive: Federated Learning, model optimization, and systems design.
 ![VS_Code](https://img.shields.io/badge/VS_Code-007ACC?style=flat-square&logo=visual-studio-code&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white)
 
-## Featured Projects
-
-| Project | What it does | Stack |
-| --- | --- | --- |
-| [IMDB-Sentiment-Classification-with-Federated-Learning](https://github.com/isaac-sun/IMDB-Sentiment-Classification-with-Federated-Learning) | Sentiment classification pipeline with federated learning experiments | Python, PyTorch |
-| [Chest-X-ray-Pneumonia-Classification-with-Centralized---Federated-Learning](https://github.com/isaac-sun/Chest-X-ray-Pneumonia-Classification-with-Centralized---Federated-Learning) | Medical image classification with centralized and federated training comparison | Python, TensorFlow |
-| [Profile Repository](https://github.com/isaac-sun/isaac-sun) | Personal profile and engineering showcase | Markdown, GitHub |
 
 ## GitHub Pulse
 
