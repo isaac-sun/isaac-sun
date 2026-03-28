@@ -1,75 +1,125 @@
 <!--
-👋 Hi! Thanks for checking my profile README.
-You can edit all the content below to fit your own style.
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  Welcome to my profile! Feel free to explore and connect.    ║
+  ╚══════════════════════════════════════════════════════════════╝
 -->
 
-<h1 align="center">Hi 👋, I'm Yinan SUN</h1>
-<h3 align="center">An undergraduate student from China</h3>
+<div align="center">
 
-<p align="center">
-  <!-- 简短一句话介绍，比如：First-year CS student @ UNNC · Interested in distributed systems & AI -->
-  Passionate about COMPUTER SCIENCE · Currently learning federated learning (FL) · Love building full stack projects
-</p>
+# ✨ Yinan SUN
+
+### 🎓 Computer Science with Artificial Intelligence @ University of Nottingham Ningbo China
 
 ---
 
-### 🧑‍💻 About me
+### 🚀 About Me
 
-- 🎓 I’m currently studying **Computer Science wiith Artificial Intelligence@University of Nottingham Ningbo China**
-- 🌱 I’m currently learning **C, Python, Vue, SQL, Nand2Tetris, Linear Algebra**  
-- 💡 I enjoy **building full-stack projects**
-- 💼 I’m interested in **Federated Learning**
-- 📷 Outside of coding, I like **photography, debating, cross-cultural communication**  
-- 📫 How to reach me: **scyys25@nottingham.edu.cn**
+```
+┌─────────────────────────────────────────────────────────────┐
+│  Passionate about building elegant solutions                │
+│  Currently diving deep into Federated Learning & AI         │
+│  Full-stack developer with a keen eye for design            │
+└─────────────────────────────────────────────────────────────┘
+```
+
+📍 Ningbo, China &nbsp;|&nbsp; 📧 scyys25@nottingham.edu.cn &nbsp;|&nbsp; 💼 [LinkedIn](https://www.linkedin.com/in/isaac-sun/)
 
 ---
 
 ### 🛠️ Tech Stack
 
-<!-- 你会什么就写什么，不会的就删掉 -->
+#### Languages
+![C](https://img.shields.io/badge/C-00599C?style=flat-square&logo=c&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat-square&logo=sqlite&logoColor=white)
+![LaTeX](https://img.shields.io/badge/LaTeX-008080?style=flat-square&logo=latex&logoColor=white)
 
-**Languages**
+#### Web & Frameworks
+![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=flat-square&logo=vue.js&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
 
-- C · Python · JavaScript · SQL · Markdown · LaTeX
+#### Tools & Platforms
+![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux/Ubuntu-E95420?style=flat-square&logo=ubuntu&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=flat-square&logo=visual-studio-code&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white)
 
-**Web & Frameworks**
+#### 📚 Currently Learning
+<p>
 
-- HTML · CSS · Vue.js · React 
+```
+Frontend Development  ████████████░░░░  70%
+Data Structures       ████████░░░░░░░░  50%
+Database Systems       ██████████░░░░░░  60%
+Linear Algebra        ██████░░░░░░░░░░  40%
+```
 
-**Tools & Platforms**
-
-- Git · GitHub · VS Code · Linux / Ubuntu · Docker
-- SQLite  
-
-**Currently learning**
-
-- Data Structures & Algorithms  
-- Database and Interfaces  
-- Computer Fundamentals  
+</p>
 
 ---
 
+### 📂 Featured Projects
+
+| Project | Description | Tech Stack |
+|---------|-------------|------------|
+| [Distributed_FL](https://github.com/isaac-sun/distributed-fl) | Federated Learning Implementation | Python, PyTorch |
+| [Full-Stack App](https://github.com/isaac-sun) | Vue + React full-stack project | Vue.js, React, Node.js |
+
+---
 
 ### 📊 GitHub Stats
 
-<!-- 这些统计图是常见模板，等你愿意折腾的时候可以把用户名换成你自己的 -->
-
-<!-- GitHub Streak (new link!) -->
 <p align="center">
-  <img src="https://streak-stats.demolab.com?user=isaac-sun" />
+  <img src="https://streak-stats.demolab.com?user=isaac-sun&theme=highcontrast&border_radius=5" alt="GitHub Streak" />
 </p>
 
-### 🤝 Connect with me
-
-- 📧 Email: scyys25@nottingham.edu.cn  
-- 💼 LinkedIn: [Yi'nan SUN](https://www.linkedin.com/in/isaac-sun/)  
-<!--- 🌐 Personal site / blog (if any)-->
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=isaac-sun&theme=highcontrast&show_icons=true&border_radius=10&include_all_commits=true" alt="GitHub Stats" />
+</p>
 
 ---
 
-<!-- Optionally add a little footer -->
+### 🌟 Interests & Beyond
+
+<p>
+
+- 📷 **Photography** — Capturing moments and stories through镜头
+- 🗣️ **Debating** — Sharpening critical thinking through dialogue
+- 🌏 **Cross-cultural Communication** — Bridging perspectives
+
+</p>
+
+---
+
+### 🤝 Let's Connect
 
 <p align="center">
-  Thanks for visiting 💫 <br/>
-  Feel free to check out my repos and leave a ⭐ if you find something interesting!
+
+[![Email](https://img.shields.io/badge/Email-cyys25@nottingham.edu.cn-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:scyys25@nottingham.edu.cn)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Yi'nan%20SUN-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/isaac-sun/)
+[![GitHub](https://img.shields.io/badge/GitHub-isaac--sun-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/isaac-sun)
+
 </p>
+
+---
+
+<p align="center">
+
+> *"Talk is cheap. Show me the code."* — Linus Torvalds
+
+</p>
+
+<p align="center">
+
+[![Visits](https://komarev.com/ghpvc/?username=isaac-sun&color=blueviolet&style=flat-square)](https://github.com/isaac-sun)
+&nbsp;&nbsp;
+Thanks for visiting! 💫
+
+</p>
+
+</div>
