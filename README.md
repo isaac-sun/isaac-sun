@@ -60,9 +60,7 @@
 ## `$ ls -la projects/`
 
 ```
-drwxr-xr-x  project-one    [in_progress]  Python · Flask · SQLite  ← Replace with your real project description
-drwxr-xr-x  project-two    [planned    ]  Vue · Node.js            ← Replace with your real project description
-drwxr-xr-x  project-three  [completed  ]  React · Docker           ← Replace with your real project description
+UNDER CONSTRUCTION
 ```
 
 > `tip:` Link each directory name to its actual repository and add a one-line value proposition.
