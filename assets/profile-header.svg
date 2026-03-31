@@ -21,13 +21,15 @@
   <text x="44" y="158" font-size="32" font-weight="700" fill="#4ade80" font-family="'SF Mono','Fira Code',monospace">Yinan SUN</text>
   <text x="310" y="158" font-size="32" fill="#6e7681" font-family="'SF Mono','Fira Code',monospace">// CS + AI @ UNNC</text>
   <!-- Specializations -->
-  <text x="44" y="196" font-size="14" fill="#58a6ff" font-family="'SF Mono','Fira Code',monospace">› Federated Learning</text>
-  <text x="274" y="196" font-size="14" fill="#6e7681" font-family="'SF Mono','Fira Code',monospace">|</text>
-  <text x="288" y="196" font-size="14" fill="#58a6ff" font-family="'SF Mono','Fira Code',monospace">AI Systems</text>
-  <text x="418" y="196" font-size="14" fill="#6e7681" font-family="'SF Mono','Fira Code',monospace">|</text>
-  <text x="432" y="196" font-size="14" fill="#58a6ff" font-family="'SF Mono','Fira Code',monospace">Full-Stack Engineering</text>
-  <text x="700" y="196" font-size="14" fill="#6e7681" font-family="'SF Mono','Fira Code',monospace">|</text>
-  <text x="714" y="196" font-size="14" fill="#58a6ff" font-family="'SF Mono','Fira Code',monospace">Human-Centered Design</text>
+  <text x="44" y="196" font-size="14" font-family="'SF Mono','Fira Code',monospace">
+    <tspan fill="#58a6ff">Federated Learning</tspan>
+    <tspan fill="#6e7681">  ·  </tspan>
+    <tspan fill="#58a6ff">AI Systems</tspan>
+    <tspan fill="#6e7681">  ·  </tspan>
+    <tspan fill="#58a6ff">Full-Stack Engineering</tspan>
+    <tspan fill="#6e7681">  ·  </tspan>
+    <tspan fill="#58a6ff">Human-Centered Design</tspan>
+  </text>
   <!-- Status -->
   <text x="44" y="232" font-size="13" fill="#3fb950" font-family="'SF Mono','Fira Code',monospace">[  OK  ]</text>
   <text x="116" y="232" font-size="13" fill="#8b949e" font-family="'SF Mono','Fira Code',monospace">status=OPEN · Open to internship and research collaboration · Ningbo, China</text>
