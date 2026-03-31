@@ -1,0 +1,7 @@
+<svg width="1200" height="72" viewBox="0 0 1200 72" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Terminal exit footer">
+  <rect width="1200" height="72" fill="#0d1117" rx="10"/>
+  <line x1="0" y1="0" x2="1200" y2="0" stroke="#30363d" stroke-width="1"/>
+  <text x="44" y="30" font-size="15" fill="#4ade80" font-family="'SF Mono','Fira Code',monospace" font-weight="600">isaac@github:~$</text>
+  <text x="214" y="30" font-size="15" fill="#e6edf3" font-family="'SF Mono','Fira Code',monospace">exit 0</text>
+  <text x="44" y="54" font-size="12" fill="#6e7681" font-family="'SF Mono','Fira Code',monospace">[Process completed with exit code 0]  ·  Keep building. Keep shipping.</text>
+</svg>
