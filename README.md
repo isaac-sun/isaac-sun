@@ -24,16 +24,14 @@
 ## `$ cat /etc/profile`
 
 ```text
-  ┌──────────────┬──────────────────────────────────────────────────────┐
-  │ isaac@github │                                                      │
-  ├──────────────┼──────────────────────────────────────────────────────┤
-  │ os           │ CS with Artificial Intelligence                      │
-  │ university   │ University of Nottingham Ningbo China                │
-  │ languages    │ Python  ·  C  ·  JavaScript  ·  SQL  ·  LaTeX       │
-  │ location     │ Ningbo, China                                        │
-  │ focus        │ Federated Learning · AI Systems · Full-Stack Dev     │
-  │ status       │ [OPEN] Internship & research collaboration           │
-  └──────────────┴──────────────────────────────────────────────────────┘
+  isaac@github
+  ────────────────────────────────────────────────────
+  os          CS with Artificial Intelligence
+  university  University of Nottingham Ningbo China
+  languages   Python · C · JavaScript · SQL · LaTeX
+  location    Ningbo, China
+  focus       Federated Learning · AI Systems · Full-Stack Dev
+  status      [OPEN] Internship & research collaboration
 ```
 
 ## `$ cat skills.json`
