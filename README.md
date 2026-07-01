@@ -51,22 +51,14 @@
 
 <br>
 
-## 🏆  `$ cat /proc/trophies`
-
-<div align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=isaac-sun&theme=onedark&no-frame=true&no-bg=true&margin-w=8&column=7&rank=SECRET,SSS,SS,S,AAA,AA,A" alt="GitHub trophies" />
-</div>
-
-<br>
-
 ## 📊  `$ htop --stats`
 
 <div align="center">
-  <a href="https://github.com/anuraghazra/github-readme-stats">
-    <img height="180" src="https://github-readme-stats.vercel.app/api?username=isaac-sun&show_icons=true&include_all_commits=true&count_private=true&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=4ade80&icon_color=4ade80&text_color=c9d1d9&ring_color=4ade80&border_radius=12" alt="Isaac's GitHub stats" />
+  <a href="https://github.com/isaac-sun">
+    <img height="195" src="https://raw.githubusercontent.com/isaac-sun/isaac-sun/output/stats-overview.svg" alt="GitHub stats overview" />
   </a>
-  <a href="https://github.com/anuraghazra/github-readme-stats">
-    <img height="180" src="https://github-readme-stats.vercel.app/api/top-langs/?username=isaac-sun&layout=compact&langs_count=8&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=4ade80&text_color=c9d1d9&border_radius=12" alt="Top Languages" />
+  <a href="https://github.com/isaac-sun">
+    <img height="195" src="https://raw.githubusercontent.com/isaac-sun/isaac-sun/output/stats-languages.svg" alt="Top languages" />
   </a>
 </div>
 
@@ -74,7 +66,7 @@
 
 <div align="center">
   <a href="https://git.io/streak-stats">
-    <img height="180" src="https://streak-stats.demolab.com?user=isaac-sun&theme=github-green-purple&hide_border=true&background=0D1117&ring=4ADE80&fire=4ADE80&currStreakLabel=4ADE80&sideLabels=4ADE80&dates=8B949E&currStreakNum=C9D1D9&sideNums=C9D1D9&stroke=30363D&border_radius=12" alt="GitHub streak stats" />
+    <img height="180" src="https://streak-stats.demolab.com?user=isaac-sun&theme=github-dark&hide_border=true&background=0D1117&ring=4ADE80&fire=4ADE80&currStreakLabel=4ADE80&sideLabels=4ADE80&dates=8B949E&stroke=30363D&border_radius=12" alt="GitHub streak stats" />
   </a>
 </div>
 
