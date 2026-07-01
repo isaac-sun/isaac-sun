@@ -65,26 +65,6 @@ UNDER CONSTRUCTION
 
 > `tip:` Link each directory name to its actual repository and add a one-line value proposition.
 
-## `$ uptime && git streak`
-
-<p align="center">
-  <img src="https://streak-stats.demolab.com?user=isaac-sun&theme=tokyonight&hide_border=true" alt="GitHub streak" />
-</p>
-
-<p align="center">
-  <img src="https://ghchart.rshah.org/4ade80/isaac-sun" alt="GitHub contribution graph" />
-</p>
-
-## `$ cat roadmap.txt`
-
-```
-# 2026 Goals
-# ──────────────────────────────────────────────────────────────────
-  Q1  →  publish end-to-end federated learning project with docs
-  Q2  →  make a meaningful contribution to open-source AI tooling
-  Q3  →  ship a production-ready full-stack side project
-  Q4  →  publish technical notes on systems design and ML
-```
 
 ## `$ cat /proc/interests`
 
