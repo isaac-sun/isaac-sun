@@ -43,7 +43,7 @@
   ──────────────────────────────────────────────────────────
   os           CS with Artificial Intelligence
   university   University of Nottingham Ningbo China (UNNC)
-  languages    Python · C · JavaScript · SQL · LaTeX
+  languages    Python · C · JavaScript · Java 
   location     Ningbo, China
   focus        Federated Learning · AI Systems · Full-Stack Dev
   status       [OPEN] Internship & research collaboration
