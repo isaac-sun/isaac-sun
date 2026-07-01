@@ -43,7 +43,7 @@
   ──────────────────────────────────────────────────────────
   os           CS with Artificial Intelligence
   university   University of Nottingham Ningbo China (UNNC)
-  languages    Python · C · JavaScript · Java 
+  languages    Python · C · JavaScript · SQL · LaTeX · Haskell · Java · MIPS Assembly
   location     Ningbo, China
   focus        Federated Learning · AI Systems · Full-Stack Dev
   status       [OPEN] Internship & research collaboration
@@ -103,6 +103,9 @@
 <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white&labelColor=0d1117" alt="TypeScript" />
 <img src="https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=sqlite&logoColor=white&labelColor=0d1117" alt="SQL" />
 <img src="https://img.shields.io/badge/LaTeX-008080?style=for-the-badge&logo=latex&logoColor=white&labelColor=0d1117" alt="LaTeX" />
+<img src="https://img.shields.io/badge/Haskell-5D4F85?style=for-the-badge&logo=haskell&logoColor=white&labelColor=0d1117" alt="Haskell" />
+<img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white&labelColor=0d1117" alt="Java" />
+<img src="https://img.shields.io/badge/MIPS_Assembly-555555?style=for-the-badge&labelColor=0d1117" alt="MIPS Assembly" />
 
 <br>
 
