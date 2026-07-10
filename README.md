@@ -1,172 +1,196 @@
 <div align="center">
-  <img src="./assets/profile-header.svg" width="100%" alt="Yinan SUN — Computer Science with Artificial Intelligence" />
+  <img src="./assets/profile-header.svg" width="100%" alt="isaac-sun@github terminal" />
 </div>
 
-<br/>
+<br>
+
+<div align="center">
+  <a href="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=3000&pause=1500&color=4ADE80&center=true&vCenter=true&width=750&lines=%24+whoami+--verbose;Federated+Learning+Researcher;Full-Stack+Engineer+%2F+Product+Builder;AI+Systems+%7C+Model+Optimization;Always+be+shipping.">
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=3000&pause=1500&color=4ADE80&center=true&vCenter=true&width=750&lines=%24+whoami+--verbose;Federated+Learning+Researcher;Full-Stack+Engineer+%2F+Product+Builder;AI+Systems+%7C+Model+Optimization;Always+be+shipping." alt="Animated typing intro" />
+  </a>
+</div>
+
+<br>
+
+<div align="center">
+  <a href="mailto:scyys25@nottingham.edu.cn">
+    <img src="https://img.shields.io/badge/Email-scyys25%40nottingham.edu.cn-D14836?style=for-the-badge&logo=gmail&logoColor=white&labelColor=0d1117" alt="Email" />
+  </a>
+  <a href="https://www.linkedin.com/in/isaac-sun/">
+    <img src="https://img.shields.io/badge/LinkedIn-Yinan_SUN-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=0d1117" alt="LinkedIn" />
+  </a>
+  <a href="https://github.com/isaac-sun">
+    <img src="https://img.shields.io/badge/GitHub-isaac--sun-181717?style=for-the-badge&logo=github&logoColor=white&labelColor=0d1117" alt="GitHub" />
+  </a>
+</div>
+
+<br>
+
+<div align="center">
+  <img src="https://komarev.com/ghpvc/?username=isaac-sun&style=for-the-badge&color=4ade80&label=👁+Profile+Views" alt="Profile views" />
+  <img src="https://img.shields.io/github/followers/isaac-sun?style=for-the-badge&logo=github&label=Followers&color=4ade80&labelColor=0d1117" alt="GitHub followers" />
+  <img src="https://img.shields.io/github/stars/isaac-sun?style=for-the-badge&logo=github&label=Stars&color=f472b6&labelColor=0d1117&affiliations=OWNER" alt="GitHub stars" />
+</div>
+
+<br>
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%" />
+
+## 👨‍💻  `$ cat /etc/profile`
+
+```text
+  isaac@github
+  ──────────────────────────────────────────────────────────
+  os           CS with Artificial Intelligence
+  university   University of Nottingham Ningbo China (UNNC)
+  languages    Python · C · JavaScript · SQL · LaTeX · Haskell · Java · MIPS Assembly
+  location     Ningbo, China
+  focus        Federated Learning · AI Systems · Full-Stack Dev
+  status       [OPEN] Internship & research collaboration
+```
+
+<br>
+
+## 📊  `$ htop --stats`
+
+<div align="center">
+  <a href="https://github.com/isaac-sun">
+    <img height="195" src="https://raw.githubusercontent.com/isaac-sun/isaac-sun/output/stats-overview.svg" alt="GitHub stats overview" />
+  </a>
+  <a href="https://github.com/isaac-sun">
+    <img height="195" src="https://raw.githubusercontent.com/isaac-sun/isaac-sun/output/stats-languages.svg" alt="Top languages" />
+  </a>
+</div>
+
+<br>
+
+<div align="center">
+  <a href="https://git.io/streak-stats">
+    <img height="180" src="https://streak-stats.demolab.com?user=isaac-sun&theme=github-dark&hide_border=true&background=0D1117&ring=4ADE80&fire=4ADE80&currStreakLabel=4ADE80&sideLabels=4ADE80&dates=8B949E&stroke=30363D&border_radius=12" alt="GitHub streak stats" />
+  </a>
+</div>
+
+<br>
+
+## 📈  `$ sar -A`
+
+<div align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=isaac-sun&theme=github-compact&bg_color=0d1117&color=4ade80&line=4ade80&point=4ade80&area=true&area_color=4ade80&hide_border=true&custom_title=Contribution+Activity&border_radius=12" width="95%" alt="Contribution activity graph" />
+</div>
+
+<br>
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%" />
+
+## 🛠  `$ cat skills.json`
+
+<br>
 
 <div align="center">
 
-[![Email](https://img.shields.io/badge/Email-scyys25%40nottingham.edu.cn-0F172A?style=for-the-badge&logo=gmail&logoColor=38BDF8&labelColor=0B1220)](mailto:scyys25@nottingham.edu.cn)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Yinan_SUN-0F172A?style=for-the-badge&logo=linkedin&logoColor=38BDF8&labelColor=0B1220)](https://www.linkedin.com/in/isaac-sun/)
-[![Website](https://img.shields.io/badge/Website-isaac--sun.github.io-0F172A?style=for-the-badge&logo=githubpages&logoColor=A78BFA&labelColor=0B1220)](https://isaac-sun.github.io)
-[![GitHub](https://img.shields.io/badge/GitHub-isaac--sun-0F172A?style=for-the-badge&logo=github&logoColor=E2E8F0&labelColor=0B1220)](https://github.com/isaac-sun)
+### Languages
+<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white&labelColor=0d1117" alt="Python" />
+<img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white&labelColor=0d1117" alt="C" />
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black&labelColor=0d1117" alt="JavaScript" />
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white&labelColor=0d1117" alt="TypeScript" />
+<img src="https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=sqlite&logoColor=white&labelColor=0d1117" alt="SQL" />
+<img src="https://img.shields.io/badge/LaTeX-008080?style=for-the-badge&logo=latex&logoColor=white&labelColor=0d1117" alt="LaTeX" />
+<img src="https://img.shields.io/badge/Haskell-5D4F85?style=for-the-badge&logo=haskell&logoColor=white&labelColor=0d1117" alt="Haskell" />
+<img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white&labelColor=0d1117" alt="Java" />
+<img src="https://img.shields.io/badge/MIPS_Assembly-555555?style=for-the-badge&labelColor=0d1117" alt="MIPS Assembly" />
 
-<br/>
+<br>
 
-[![Profile Views](https://komarev.com/ghpvc/?username=isaac-sun&style=for-the-badge&color=38bdf8&label=Profile+Views)](https://github.com/isaac-sun)
-[![Followers](https://img.shields.io/github/followers/isaac-sun?style=for-the-badge&logo=github&label=Followers&color=818cf8&labelColor=0B1220)](https://github.com/isaac-sun?tab=followers)
-[![Stars](https://img.shields.io/github/stars/isaac-sun?affiliations=OWNER&style=for-the-badge&logo=github&label=Stars&color=a78bfa&labelColor=0B1220)](https://github.com/isaac-sun?tab=repositories)
+### Frameworks &amp; Libraries
+<img src="https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white&labelColor=0d1117" alt="Vue.js" />
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black&labelColor=0d1117" alt="React" />
+<img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white&labelColor=0d1117" alt="Flask" />
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white&labelColor=0d1117" alt="HTML5" />
+<img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white&labelColor=0d1117" alt="CSS3" />
+<img src="https://img.shields.io/badge/Tailwind-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white&labelColor=0d1117" alt="Tailwind CSS" />
 
-</div>
+<br>
 
-<br/>
-
-<img src="./assets/divider.svg" width="100%" alt="" />
-
-## About
-
-Undergraduate in **Computer Science with Artificial Intelligence** at the **University of Nottingham Ningbo China (UNNC)**, with planned study progression at the University of Nottingham (UK).
-
-I care about building systems that are not only intelligent, but also **reliable, inspectable, and useful in the real world**. My current research and project focus sits at the intersection of:
-
-- **Federated Learning** — privacy-preserving distributed training, robust aggregation, free-rider detection
-- **AI Systems** — model optimization, evaluation pipelines, practical ML engineering
-- **Full-Stack Development** — turning research ideas into usable products and tools
-
-**Currently open to research collaboration, internships, and open-source contributions.**
-
-<br/>
-
-<img src="./assets/divider.svg" width="100%" alt="" />
-
-## Tech Stack
-
-<div align="center">
-
-**Languages**
-
-![Python](https://img.shields.io/badge/Python-0B1220?style=for-the-badge&logo=python&logoColor=38BDF8)
-![C](https://img.shields.io/badge/C-0B1220?style=for-the-badge&logo=c&logoColor=A5B4FC)
-![JavaScript](https://img.shields.io/badge/JavaScript-0B1220?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
-![TypeScript](https://img.shields.io/badge/TypeScript-0B1220?style=for-the-badge&logo=typescript&logoColor=3178C6)
-![Java](https://img.shields.io/badge/Java-0B1220?style=for-the-badge&logo=openjdk&logoColor=ED8B00)
-![Haskell](https://img.shields.io/badge/Haskell-0B1220?style=for-the-badge&logo=haskell&logoColor=A78BFA)
-![SQL](https://img.shields.io/badge/SQL-0B1220?style=for-the-badge&logo=postgresql&logoColor=38BDF8)
-![LaTeX](https://img.shields.io/badge/LaTeX-0B1220?style=for-the-badge&logo=latex&logoColor=E2E8F0)
-
-**AI / ML**
-
-![PyTorch](https://img.shields.io/badge/PyTorch-0B1220?style=for-the-badge&logo=pytorch&logoColor=EE4C2C)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-0B1220?style=for-the-badge&logo=tensorflow&logoColor=FF6F00)
-![Federated Learning](https://img.shields.io/badge/Federated_Learning-0B1220?style=for-the-badge&logo=hackthebox&logoColor=34D399)
-
-**Web & Tools**
-
-![Flask](https://img.shields.io/badge/Flask-0B1220?style=for-the-badge&logo=flask&logoColor=E2E8F0)
-![React](https://img.shields.io/badge/React-0B1220?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Vue.js](https://img.shields.io/badge/Vue.js-0B1220?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D)
-![Git](https://img.shields.io/badge/Git-0B1220?style=for-the-badge&logo=git&logoColor=F05032)
-![Docker](https://img.shields.io/badge/Docker-0B1220?style=for-the-badge&logo=docker&logoColor=2496ED)
-![Linux](https://img.shields.io/badge/Linux-0B1220?style=for-the-badge&logo=linux&logoColor=FCC624)
+### Tools &amp; Platforms
+<img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white&labelColor=0d1117" alt="Git" />
+<img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white&labelColor=0d1117" alt="Docker" />
+<img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black&labelColor=0d1117" alt="Linux" />
+<img src="https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white&labelColor=0d1117" alt="VS Code" />
+<img src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white&labelColor=0d1117" alt="SQLite" />
+<img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white&labelColor=0d1117" alt="PyTorch" />
 
 </div>
 
-<br/>
+<br>
 
-<img src="./assets/divider.svg" width="100%" alt="" />
+## 🚀  `$ ls -la projects/`
 
-## Experience Snapshot
+```text
+drwxr-xr-x  project-alpha    [in_progress]  Federated Learning framework · Python · PyTorch
+drwxr-xr-x  project-beta     [planned    ]  AI-powered full-stack app · Vue · Flask · SQLite
+drwxr-xr-x  project-gamma    [completed  ]  Personal website & blog · React · Tailwind
+```
 
-- **IT Services Intern** — University of Nottingham Ningbo China  
-  Supporting campus information systems and user-facing IT operations; contributed to problem-shooting documentation for freshman pre-registration serving **800+ students**.
+> 💡 *Link each directory name to its actual repository and add a one-line value proposition.*
 
-- **Project Lead** — UNNC Orientation / Peer Mentoring  
-  Coordinated peer mentor recruitment, interviews, and orientation logistics for the academic year intake.
+<br>
 
-- **President** — UNNC Psychology Association  
-  Led association operations and brand upgrade; integrated an intelligent support bot into the WeChat official account for campus mental-health support scenarios.
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%" />
 
-- **Vice President** — UNNC CPU  
-  Planned student activities and coordinated cross-organization collaboration.
-
-<br/>
-
-<img src="./assets/divider.svg" width="100%" alt="" />
-
-## Awards & Recognition
-
-| Year | Award | Context |
-|---|---|---|
-| 2026 | **Outstanding Winner (Top 7% Global)** | Mathematical Contest in Modeling (MCM/ICM) |
-| 2026 | **Outstanding Student Leader (Top 5%)** | UNNC Student Awards |
-| 2026 | **Best Mentor** | UNNC Peer Mentoring Programme |
-| 2026 | **Outstanding Contribution Award** | UNNC Peer Mentoring Awards |
-| 2025 | AI & Sustainable Future Innovation Challenge | Project proposal on AI-enabled enterprise digital asset systems |
-
-<br/>
-
-<img src="./assets/divider.svg" width="100%" alt="" />
-
-## GitHub Activity
-
-<div align="center">
-  <img height="180" src="https://raw.githubusercontent.com/isaac-sun/isaac-sun/output/stats-overview.svg" alt="GitHub stats overview" />
-  <img height="180" src="https://raw.githubusercontent.com/isaac-sun/isaac-sun/output/stats-languages.svg" alt="Top languages" />
-</div>
-
-<br/>
-
-<div align="center">
-  <img src="https://streak-stats.demolab.com?user=isaac-sun&theme=transparent&hide_border=true&ring=38BDF8&fire=818CF8&currStreakLabel=A78BFA&sideLabels=94A3B8&dates=64748B&stroke=1E293B&background=00000000&border_radius=12" alt="GitHub streak" />
-</div>
-
-<br/>
+## 🐍  `$ python3 contrib-snake.py`
 
 <div align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/isaac-sun/isaac-sun/output/github-contribution-grid-snake-dark.svg" />
     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/isaac-sun/isaac-sun/output/github-contribution-grid-snake.svg" />
-    <img alt="Contribution snake" src="https://raw.githubusercontent.com/isaac-sun/isaac-sun/output/github-contribution-grid-snake.svg" width="90%" />
+    <img alt="GitHub contribution snake animation" src="https://raw.githubusercontent.com/isaac-sun/isaac-sun/output/github-contribution-grid-snake.svg" width="90%" />
   </picture>
 </div>
 
-<br/>
+<br>
 
-<img src="./assets/divider.svg" width="100%" alt="" />
-
-## 2026 Focus
+## 🗺  `$ cat roadmap.txt`
 
 ```text
-Q1  Publish a complete federated learning research project with clear docs and evaluation
-Q2  Contribute meaningfully to open-source AI / systems tooling
-Q3  Ship a production-ready full-stack side project
-Q4  Publish technical notes on systems design, ML engineering, and research practice
+# 2026 Goals
+# ──────────────────────────────────────────────────────────────────
+  Q1  →  publish end-to-end federated learning project with docs
+  Q2  →  make a meaningful contribution to open-source AI tooling
+  Q3  →  ship a production-ready full-stack side project
+  Q4  →  publish technical notes on systems design and ML
 ```
 
-<br/>
+<br>
 
-## Beyond Code
+## 🎯  `$ cat /proc/interests`
 
-- **Photography** — composition, visual storytelling
-- **Debate** — structured reasoning and first-principles thinking
-- **Languages & culture** — cross-cultural communication
-- **Open source** — learning by building in public
+```text
+photography     visual storytelling and composition
+debate          structured argument and first-principles thinking
+languages       cross-cultural communication
+open-source     building in public · learning by shipping
+```
 
-<br/>
+<br>
 
-<img src="./assets/divider.svg" width="100%" alt="" />
+## 💬  `$ fortune`
 
-## Contact
+```
+"The people who are crazy enough to think they can
+ change the world are the ones who do."
+                                        — Steve Jobs
+```
 
-If you are working on **federated learning**, **AI systems**, or **research-to-product** problems and think we might collaborate well, feel free to reach out.
-
-- Email: [scyys25@nottingham.edu.cn](mailto:scyys25@nottingham.edu.cn)
-- LinkedIn: [linkedin.com/in/isaac-sun](https://www.linkedin.com/in/isaac-sun/)
-- Website: [isaac-sun.github.io](https://isaac-sun.github.io)
-- GitHub: [github.com/isaac-sun](https://github.com/isaac-sun)
-
-<br/>
+<br>
 
 <div align="center">
-  <img src="./assets/profile-footer.svg" width="100%" alt="Building reliable AI systems" />
+  <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=dark&border=true&quote=Talk+is+cheap.+Show+me+the+code.&author=Linus+Torvalds" alt="Random dev quote" />
+</div>
+
+<br>
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%" />
+
+<div align="center">
+  <img src="./assets/profile-footer.svg" width="100%" alt="Terminal exit footer" />
 </div>
