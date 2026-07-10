@@ -1,28 +1,17 @@
-<svg width="1200" height="72" viewBox="0 0 1200 72" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Terminal exit footer">
+<svg width="1200" height="84" viewBox="0 0 1200 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Profile footer">
   <defs>
-    <linearGradient id="footerBg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0a0a0f"/>
-      <stop offset="100%" stop-color="#0d1117"/>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1220"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
     </linearGradient>
   </defs>
-
-  <rect width="1200" height="72" fill="url(#footerBg)" rx="10"/>
-
-  <!-- Top accent line -->
-  <line x1="0" y1="0" x2="1200" y2="0" stroke="#4ade80" stroke-opacity="0.3" stroke-width="1.5"/>
-
-  <!-- Decorative dots -->
-  <circle cx="20" cy="12" r="2" fill="#4ade80" fill-opacity="0.4"/>
-  <circle cx="32" cy="12" r="2" fill="#22d3ee" fill-opacity="0.3"/>
-  <circle cx="44" cy="12" r="2" fill="#818cf8" fill-opacity="0.3"/>
-
-  <!-- Prompt -->
-  <text x="44" y="32" font-size="14" fill="#4ade80" font-family="'SF Mono','Fira Code',monospace" font-weight="600">❯</text>
-  <text x="66" y="32" font-size="14" fill="#e6edf3" font-family="'SF Mono','Fira Code',monospace">exit 0</text>
-
-  <!-- Message -->
-  <text x="44" y="56" font-size="11" fill="#6e7681" font-family="'SF Mono','Fira Code',monospace">[Process completed with exit code 0]  ·  Keep building. Keep shipping. 🚀</text>
-
-  <!-- Right side decoration -->
-  <text x="1120" y="32" font-size="11" fill="#30363d" font-family="'SF Mono','Fira Code',monospace">EOF</text>
+  <rect width="1200" height="84" rx="14" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="3" fill="url(#accent)"/>
+  <text x="600" y="38" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="16" fill="#E2E8F0">Building reliable AI systems · Learning in public · Shipping with intent</text>
+  <text x="600" y="62" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" fill="#64748B">© 2026 Yinan SUN · github.com/isaac-sun</text>
 </svg>
