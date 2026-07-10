@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: "0 6 * * *"
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/stats-cards.yml"
 
 permissions:
   contents: write
@@ -14,8 +19,6 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: output
 
       - uses: actions/setup-python@v5
         with:
@@ -26,130 +29,196 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 - <<'PYEOF'
-          import os, json, urllib.request, math
+          import json
+          import os
+          import urllib.error
+          import urllib.request
+          from pathlib import Path
 
           token = os.environ["GITHUB_TOKEN"]
           user = "isaac-sun"
 
-          def gh(path):
+          def gh(path: str):
               req = urllib.request.Request(
                   f"https://api.github.com{path}",
-                  headers={"Authorization": f"Bearer {token}", "User-Agent": "github-stats-action"}
+                  headers={
+                      "Authorization": f"Bearer {token}",
+                      "Accept": "application/vnd.github+json",
+                      "User-Agent": "github-stats-action",
+                      "X-GitHub-Api-Version": "2022-11-28",
+                  },
               )
               with urllib.request.urlopen(req) as r:
                   return json.loads(r.read())
 
-          # Fetch user info
-          u = gh(f"/users/{user}")
-          repos = gh(f"/users/{user}/repos?per_page=100&type=owner")
-          public_repos = u["public_repos"]
-          followers = u["followers"]
-          total_stars = sum(r["stargazers_count"] or 0 for r in repos)
-          total_forks = sum(r["forks_count"] or 0 for r in repos)
+          def gh_safe(path: str, default=None):
+              try:
+                  return gh(path)
+              except urllib.error.HTTPError as e:
+                  print(f"warn: failed {path}: {e.code}")
+                  return default
 
-          # Language stats
+          u = gh(f"/users/{user}")
+          repos = []
+          page = 1
+          while True:
+              batch = gh(f"/users/{user}/repos?per_page=100&type=owner&page={page}")
+              if not batch:
+                  break
+              repos.extend(batch)
+              if len(batch) < 100:
+                  break
+              page += 1
+
+          public_repos = u.get("public_repos", 0)
+          followers = u.get("followers", 0)
+          total_stars = sum((r.get("stargazers_count") or 0) for r in repos if not r.get("fork"))
+          total_forks = sum((r.get("forks_count") or 0) for r in repos if not r.get("fork"))
+
+          # Prefer actual language bytes from /languages instead of repository size.
+          # Fall back to primary language + repo size if rate-limited.
           lang_bytes = {}
+          used_language_api = 0
           for r in repos:
-              if r.get("fork") or not r.get("language"):
+              if r.get("fork") or r.get("archived"):
                   continue
-              lang = r["language"]
-              lang_bytes[lang] = lang_bytes.get(lang, 0) + (r.get("size", 0) or 0)
-          top_langs = sorted(lang_bytes.items(), key=lambda x: -x[1])[:8]
+              name = r.get("name")
+              if not name:
+                  continue
+              langs = gh_safe(f"/repos/{user}/{name}/languages", default=None)
+              if isinstance(langs, dict) and langs:
+                  used_language_api += 1
+                  for lang, nbytes in langs.items():
+                      lang_bytes[lang] = lang_bytes.get(lang, 0) + int(nbytes or 0)
+                  continue
+              primary = r.get("language")
+              if primary:
+                  lang_bytes[primary] = lang_bytes.get(primary, 0) + max(int(r.get("size") or 0), 1)
+
+          top_langs = sorted(lang_bytes.items(), key=lambda x: -x[1])[:6]
           total_bytes = sum(v for _, v in top_langs) or 1
 
-          # Language colors (GitHub's colors)
           colors = {
-              "Python": "#3572A5", "JavaScript": "#f1e05a", "TypeScript": "#3178c6",
-              "C": "#555555", "C++": "#f34b7d", "Java": "#b07219", "Haskell": "#5e5086",
-              "SQL": "#e38c00", "HTML": "#e34c26", "CSS": "#563d7c", "Vue": "#41b883",
-              "React": "#61dafb", "Dockerfile": "#384d54", "Shell": "#89e051",
-              "Jupyter Notebook": "#DA5B0B", "TeX": "#3D6117", "Assembly": "#6E4C13",
-              "Makefile": "#427819", "Rust": "#dea584", "Go": "#00ADD8",
-              "Ruby": "#701516", "PHP": "#4F5D95", "Swift": "#F05138",
-              "Kotlin": "#A97BFF", "Dart": "#00B4AB", "Scala": "#c22d40",
+              "Python": "#3572A5",
+              "JavaScript": "#f1e05a",
+              "TypeScript": "#3178c6",
+              "C": "#555555",
+              "C++": "#f34b7d",
+              "Java": "#b07219",
+              "Haskell": "#5e5086",
+              "SQL": "#e38c00",
+              "HTML": "#e34c26",
+              "CSS": "#563d7c",
+              "Vue": "#41b883",
+              "Dockerfile": "#384d54",
+              "Shell": "#89e051",
+              "Jupyter Notebook": "#DA5B0B",
+              "TeX": "#3D6117",
+              "Assembly": "#6E4C13",
+              "Makefile": "#427819",
+              "Rust": "#dea584",
+              "Go": "#00ADD8",
+              "Ruby": "#701516",
+              "PHP": "#4F5D95",
+              "Swift": "#F05138",
+              "Kotlin": "#A97BFF",
+              "Dart": "#00B4AB",
+              "Scala": "#c22d40",
+              "Markdown": "#083fa1",
           }
 
-          BG = "#0d1117"
-          GREEN = "#4ade80"
-          TEXT = "#c9d1d9"
-          SUBTLE = "#8b949e"
-          BORDER = "#30363d"
+          GREEN = "#38BDF8"
+          TEXT = "#E2E8F0"
+          SUBTLE = "#94A3B8"
+          BORDER = "#334155"
           CARD_W = 495
           CARD_H = 200
-          RADIUS = 12
+          RADIUS = 14
 
           def svg_card(w, h, body):
               return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}">
-            <defs>
-              <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#0d1117"/>
-                <stop offset="100%" stop-color="#0a0a0f"/>
-              </linearGradient>
-            </defs>
-            <rect width="{w}" height="{h}" rx="{RADIUS}" fill="url(#bg)" stroke="{BORDER}" stroke-width="1"/>
-            {body}
-          </svg>'''
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0B1220"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+  <rect width="{w}" height="{h}" rx="{RADIUS}" fill="url(#bg)" stroke="{BORDER}" stroke-width="1"/>
+{body}
+</svg>'''
 
           # --- OVERVIEW STATS CARD ---
           items = [
-              ("Repositories", str(public_repos), "📦"),
-              ("Stars", str(total_stars), "⭐"),
-              ("Followers", str(followers), "👥"),
-              ("Forks", str(total_forks), "🍴"),
+              ("Repos", str(public_repos)),
+              ("Stars", str(total_stars)),
+              ("Followers", str(followers)),
+              ("Forks", str(total_forks)),
           ]
           box_w = 100
           start_x = (CARD_W - len(items) * box_w) // 2
           body_parts = []
-          body_parts.append(f'<text x="20" y="36" font-size="14" font-weight="700" fill="{GREEN}" font-family="system-ui,sans-serif">GitHub Stats</text>')
-          body_parts.append(f'<text x="20" y="56" font-size="11" fill="{SUBTLE}" font-family="system-ui,sans-serif">@{user}</text>')
-          for i, (label, value, icon) in enumerate(items):
+          body_parts.append(f'<text x="24" y="36" font-size="15" font-weight="700" fill="{GREEN}" font-family="ui-sans-serif,system-ui,sans-serif">GitHub Stats</text>')
+          body_parts.append(f'<text x="24" y="56" font-size="12" fill="{SUBTLE}" font-family="ui-sans-serif,system-ui,sans-serif">@{user}</text>')
+          for i, (label, value) in enumerate(items):
               x = start_x + i * box_w + box_w // 2
-              body_parts.append(f'<text x="{x}" y="115" text-anchor="middle" font-size="28" font-weight="800" fill="{TEXT}" font-family="system-ui,sans-serif">{value}</text>')
-              body_parts.append(f'<text x="{x}" y="135" text-anchor="middle" font-size="11" fill="{SUBTLE}" font-family="system-ui,sans-serif">{icon} {label}</text>')
+              body_parts.append(f'<text x="{x}" y="118" text-anchor="middle" font-size="28" font-weight="800" fill="{TEXT}" font-family="ui-sans-serif,system-ui,sans-serif">{value}</text>')
+              body_parts.append(f'<text x="{x}" y="142" text-anchor="middle" font-size="12" fill="{SUBTLE}" font-family="ui-sans-serif,system-ui,sans-serif">{label}</text>')
 
-          # Contribution rank placeholder — fetch from events
-          # Simpler: just use public_repos + stars
           score = public_repos * 2 + total_stars
           level = "A+" if score > 50 else "A" if score > 20 else "B+" if score > 10 else "B"
-          body_parts.append(f'<rect x="20" y="158" width="68" height="22" rx="11" fill="{GREEN}" fill-opacity="0.15" stroke="{GREEN}" stroke-opacity="0.35" stroke-width="0.5"/>')
-          body_parts.append(f'<text x="54" y="174" text-anchor="middle" font-size="11" font-weight="700" fill="{GREEN}" font-family="system-ui,sans-serif">Rank {level}</text>')
-          body_parts.append(f'<text x="{CARD_W - 20}" y="174" text-anchor="end" font-size="10" fill="{SUBTLE}" font-family="system-ui,sans-serif">updated daily</text>')
-
-          with open("stats-overview.svg", "w") as f:
-              f.write(svg_card(CARD_W, CARD_H, "\n".join(body_parts)))
+          body_parts.append(f'<rect x="24" y="162" width="72" height="24" rx="12" fill="{GREEN}" fill-opacity="0.12" stroke="{GREEN}" stroke-opacity="0.4" stroke-width="1"/>')
+          body_parts.append(f'<text x="60" y="178" text-anchor="middle" font-size="12" font-weight="700" fill="{GREEN}" font-family="ui-sans-serif,system-ui,sans-serif">Rank {level}</text>')
+          body_parts.append(f'<text x="{CARD_W - 24}" y="178" text-anchor="end" font-size="11" fill="{SUBTLE}" font-family="ui-sans-serif,system-ui,sans-serif">updated daily</text>')
 
           # --- TOP LANGUAGES CARD ---
-          CARD_H2 = 220
+          # Layout fix: language name on the left, bar in the middle, percent on the right.
+          # Previous version overlapped labels with bars.
+          n = max(len(top_langs), 1)
+          row_h = 28
+          header_h = 72
+          card_h2 = max(180, header_h + n * row_h + 28)
           body2 = []
-          body2.append(f'<text x="20" y="36" font-size="14" font-weight="700" fill="{GREEN}" font-family="system-ui,sans-serif">Top Languages</text>')
-          body2.append(f'<text x="20" y="56" font-size="11" fill="{SUBTLE}" font-family="system-ui,sans-serif">by repository size · public repos</text>')
+          body2.append(f'<text x="24" y="36" font-size="15" font-weight="700" fill="{GREEN}" font-family="ui-sans-serif,system-ui,sans-serif">Top Languages</text>')
+          body2.append(f'<text x="24" y="56" font-size="12" fill="{SUBTLE}" font-family="ui-sans-serif,system-ui,sans-serif">by source bytes · public repos</text>')
 
-          bar_x = 20
-          bar_w = CARD_W - 140
+          label_x = 24
+          bar_x = 168
+          bar_max_w = 232
+          pct_x = CARD_W - 24
           bar_h = 10
-          bar_y_start = 80
-          bar_gap = 22
-          for i, (lang, b) in enumerate(top_langs):
-              pct = b / total_bytes
-              y = bar_y_start + i * bar_gap
-              color = colors.get(lang, "#8b949e")
-              bw = max(bar_w * pct, 3)
-              body2.append(f'<text x="20" y="{y + 8}" font-size="12" fill="{TEXT}" font-family="system-ui,sans-serif">{lang}</text>')
-              body2.append(f'<rect x="{bar_x}" y="{y - 2}" width="{bw}" height="{bar_h}" rx="4" fill="{color}"/>')
-              body2.append(f'<text x="{bar_x + bw + 8}" y="{y + 8}" font-size="11" fill="{SUBTLE}" font-family="system-ui,sans-serif">{pct:.1%}</text>')
+          y0 = 84
 
-          with open("stats-languages.svg", "w") as f:
-              f.write(svg_card(CARD_W, CARD_H2, "\n".join(body2)))
+          if not top_langs:
+              body2.append(f'<text x="24" y="110" font-size="13" fill="{SUBTLE}" font-family="ui-sans-serif,system-ui,sans-serif">No language data yet</text>')
+          else:
+              for i, (lang, b) in enumerate(top_langs):
+                  pct = b / total_bytes
+                  y = y0 + i * row_h
+                  color = colors.get(lang, "#94A3B8")
+                  bw = max(bar_max_w * pct, 6)
+                  # track
+                  body2.append(f'<rect x="{bar_x}" y="{y}" width="{bar_max_w}" height="{bar_h}" rx="5" fill="#1E293B"/>')
+                  # value
+                  body2.append(f'<rect x="{bar_x}" y="{y}" width="{bw:.2f}" height="{bar_h}" rx="5" fill="{color}"/>')
+                  body2.append(f'<text x="{label_x}" y="{y + 9}" font-size="13" fill="{TEXT}" font-family="ui-sans-serif,system-ui,sans-serif">{lang}</text>')
+                  body2.append(f'<text x="{pct_x}" y="{y + 9}" text-anchor="end" font-size="12" fill="{SUBTLE}" font-family="ui-sans-serif,system-ui,sans-serif">{pct * 100:.1f}%</text>')
 
-          print(f"✅ Generated stats-overview.svg and stats-languages.svg")
+          out_dir = Path("generated-stats")
+          out_dir.mkdir(exist_ok=True)
+          (out_dir / "stats-overview.svg").write_text(svg_card(CARD_W, CARD_H, "\n".join(body_parts)), encoding="utf-8")
+          (out_dir / "stats-languages.svg").write_text(svg_card(CARD_W, card_h2, "\n".join(body2)), encoding="utf-8")
+
+          print("✅ Generated stats-overview.svg and stats-languages.svg")
           print(f"   Repos: {public_repos}, Stars: {total_stars}, Followers: {followers}, Forks: {total_forks}")
+          print(f"   Languages from /languages API: {used_language_api}")
+          print(f"   Top languages: {top_langs}")
           PYEOF
 
-      - name: Push to output branch
-        uses: crazy-max/ghaction-github-pages@v4
+      - name: Publish to output branch
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          target_branch: output
-          build_dir: .
-          keep_history: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./generated-stats
+          publish_branch: output
+          force_orphan: true
+          enable_jekyll: true

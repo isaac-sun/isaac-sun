@@ -39,33 +39,6 @@ I care about building systems that are not only intelligent, but also **reliable
 
 <img src="./assets/divider.svg" width="100%" alt="" />
 
-## Selected Projects
-
-| Project | Focus | Stack | Status |
-|---|---|---|---|
-| [**FedFree**](https://github.com/isaac-sun/fedfree) | Two-stage free-rider attack detection in federated learning using class-wise Shapley values | Python · DistilBERT · LoRA / PEFT | Research |
-| [**Chest X-ray FL Study**](https://github.com/isaac-sun/Chest-X-ray-Pneumonia-Classification-with-Centralized---Federated-Learning) | Comparative study of centralized vs federated learning for pneumonia classification | Python · PyTorch · Federated Learning | Research |
-| [**CS & AI Learning Notes**](https://github.com/isaac-sun/cs-ai-learning-notes) | Structured knowledge base for CS & AI theory, math foundations, and from-scratch implementations | Markdown · Python | Ongoing |
-| [**Personal Site**](https://github.com/isaac-sun/isaac-sun.github.io) | Portfolio site for research, experience, and selected work | HTML · CSS · JS | Live |
-| [**GIF Generator**](https://github.com/isaac-sun/GIF-Generator) | Lightweight utility for generating GIFs | Python | Tool |
-
-<br/>
-
-### Project Highlights
-
-#### FedFree — Free-Rider Defense for Federated Learning
-A research-oriented project exploring **class-wise Shapley value based detection** against free-rider attacks in federated learning. Evaluated with DistilBERT + LoRA (PEFT) on Yahoo Answers-style text classification settings.
-
-#### Chest X-ray Pneumonia Classification
-An experimental comparison of **centralized training** and **federated learning** for medical imaging classification. Designed to understand practical trade-offs between privacy, communication, and model performance.
-
-#### CS & AI Learning Notes
-A continuously evolving public notebook covering computer science and artificial intelligence fundamentals, with emphasis on clarity, structure, and implementation-level understanding.
-
-<br/>
-
-<img src="./assets/divider.svg" width="100%" alt="" />
-
 ## Tech Stack
 
 <div align="center">
