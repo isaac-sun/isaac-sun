@@ -1,0 +1,27 @@
+<svg width="1200" height="28" viewBox="0 0 1200 28" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="neon divider">
+  <defs>
+    <linearGradient id="core" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0"/>
+      <stop offset="18%" stop-color="#22d3ee"/>
+      <stop offset="50%" stop-color="#4ade80"/>
+      <stop offset="82%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#67e8f9" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="blur" x="-10%" y="-200%" width="120%" height="500%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="28" fill="transparent"/>
+  <rect x="40" y="10" width="1120" height="8" rx="4" fill="url(#glow)" filter="url(#blur)"/>
+  <rect x="40" y="12" width="1120" height="2" rx="1" fill="url(#core)"/>
+  <circle cx="600" cy="13" r="3.5" fill="#4ade80">
+    <animate attributeName="opacity" values="0.4;1;0.4" dur="1.8s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="580" cy="13" r="2" fill="#22d3ee" opacity="0.8"/>
+  <circle cx="620" cy="13" r="2" fill="#a78bfa" opacity="0.8"/>
+</svg>
