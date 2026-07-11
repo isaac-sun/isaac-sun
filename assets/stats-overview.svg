@@ -1,0 +1,34 @@
+<svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GitHub stats overview">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#06101f"/>
+      <stop offset="100%" stop-color="#0b1224"/>
+    </linearGradient>
+    <linearGradient id="neon" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#4ade80"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="2.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="400" height="200" rx="14" fill="url(#bg)" stroke="url(#neon)" stroke-opacity="0.5" stroke-width="1.5"/>
+  <text x="20" y="28" font-family="'JetBrains Mono','Fira Code',monospace" font-size="12" fill="#94a3b8" letter-spacing="1">isaac@github :: stats</text>
+  <line x1="20" y1="40" x2="380" y2="40" stroke="#1e293b" stroke-width="1"/>
+  <circle cx="40" cy="76" r="20" fill="#04101c" stroke="#4ade80" stroke-opacity="0.5" stroke-width="1.5"/>
+  <text x="40" y="82" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="15" font-weight="700" fill="#4ade80" filter="url(#glow)">YS</text>
+  <text x="72" y="70" font-family="'Segoe UI',system-ui,sans-serif" font-size="16" font-weight="700" fill="#e2e8f0">Yinan SUN</text>
+  <text x="72" y="88" font-family="'JetBrains Mono',monospace" font-size="11" fill="#64748b">@isaac-sun · UNNC</text>
+  <text x="20" y="124" font-family="'JetBrains Mono',monospace" font-size="12" fill="#94a3b8">Public Repos</text>
+  <text x="380" y="124" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="15" font-weight="700" fill="#22d3ee">12</text>
+  <line x1="20" y1="134" x2="380" y2="134" stroke="#13233b" stroke-width="1"/>
+  <text x="20" y="146" font-family="'JetBrains Mono',monospace" font-size="12" fill="#94a3b8">Followers</text>
+  <text x="380" y="146" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="15" font-weight="700" fill="#4ade80">7</text>
+  <line x1="20" y1="156" x2="380" y2="156" stroke="#13233b" stroke-width="1"/>
+  <text x="20" y="168" font-family="'JetBrains Mono',monospace" font-size="12" fill="#94a3b8">Following</text>
+  <text x="380" y="168" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="15" font-weight="700" fill="#f472b6">8</text>
+  <line x1="20" y1="178" x2="380" y2="178" stroke="#13233b" stroke-width="1"/>
+  <text x="20" y="190" font-family="'JetBrains Mono',monospace" font-size="12" fill="#94a3b8">Stars Earned</text>
+  <text x="380" y="190" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="15" font-weight="700" fill="#a78bfa">7</text>
+</svg>
