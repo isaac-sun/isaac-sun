@@ -12,28 +12,28 @@
   <rect width="400" height="222" rx="14" fill="url(#bg)" stroke="url(#neon)" stroke-opacity="0.5" stroke-width="1.5"/>
   <text x="20" y="28" font-family="'JetBrains Mono','Fira Code',monospace" font-size="12" fill="#94a3b8" letter-spacing="1">isaac@github :: languages</text>
   <line x1="20" y1="40" x2="380" y2="40" stroke="#1e293b" stroke-width="1"/>
-  <text x="20" y="56" font-family="'JetBrains Mono',monospace" font-size="12" fill="#e2e8f0">Swift</text>
+  <text x="20" y="56" font-family="'JetBrains Mono',monospace" font-size="12" fill="#e2e8f0">Python</text>
   <rect x="20" y="62" width="340" height="8" rx="4" fill="#0b1626"/>
-  <rect x="20" y="62" width="180.6" height="8" rx="4" fill="#64748b"/>
-  <text x="372" y="56" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" fill="#64748b">53.1%</text>
-  <text x="20" y="82" font-family="'JetBrains Mono',monospace" font-size="12" fill="#e2e8f0">Python</text>
+  <rect x="20" y="62" width="170.5" height="8" rx="4" fill="#3572A5"/>
+  <text x="372" y="56" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" fill="#3572A5">50.1%</text>
+  <text x="20" y="82" font-family="'JetBrains Mono',monospace" font-size="12" fill="#e2e8f0">Swift</text>
   <rect x="20" y="88" width="340" height="8" rx="4" fill="#0b1626"/>
-  <rect x="20" y="88" width="124.7" height="8" rx="4" fill="#3572A5"/>
-  <text x="372" y="82" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" fill="#3572A5">36.7%</text>
+  <rect x="20" y="88" width="139.3" height="8" rx="4" fill="#64748b"/>
+  <text x="372" y="82" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" fill="#64748b">41.0%</text>
   <text x="20" y="108" font-family="'JetBrains Mono',monospace" font-size="12" fill="#e2e8f0">C</text>
   <rect x="20" y="114" width="340" height="8" rx="4" fill="#0b1626"/>
-  <rect x="20" y="114" width="19.8" height="8" rx="4" fill="#555555"/>
-  <text x="372" y="108" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" fill="#555555">5.8%</text>
+  <rect x="20" y="114" width="12.7" height="8" rx="4" fill="#555555"/>
+  <text x="372" y="108" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" fill="#555555">3.7%</text>
   <text x="20" y="134" font-family="'JetBrains Mono',monospace" font-size="12" fill="#e2e8f0">Jupyter Notebook</text>
   <rect x="20" y="140" width="340" height="8" rx="4" fill="#0b1626"/>
-  <rect x="20" y="140" width="8.5" height="8" rx="4" fill="#DA5B0B"/>
-  <text x="372" y="134" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" fill="#DA5B0B">2.5%</text>
+  <rect x="20" y="140" width="10.0" height="8" rx="4" fill="#DA5B0B"/>
+  <text x="372" y="134" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" fill="#DA5B0B">3.0%</text>
   <text x="20" y="160" font-family="'JetBrains Mono',monospace" font-size="12" fill="#e2e8f0">Shell</text>
   <rect x="20" y="166" width="340" height="8" rx="4" fill="#0b1626"/>
-  <rect x="20" y="166" width="6.0" height="8" rx="4" fill="#89e051"/>
-  <text x="372" y="160" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" fill="#89e051">1.3%</text>
+  <rect x="20" y="166" width="6.2" height="8" rx="4" fill="#89e051"/>
+  <text x="372" y="160" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" fill="#89e051">1.8%</text>
   <text x="20" y="186" font-family="'JetBrains Mono',monospace" font-size="12" fill="#e2e8f0">Makefile</text>
   <rect x="20" y="192" width="340" height="8" rx="4" fill="#0b1626"/>
   <rect x="20" y="192" width="6.0" height="8" rx="4" fill="#427819"/>
-  <text x="372" y="186" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" fill="#427819">0.6%</text>
+  <text x="372" y="186" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" fill="#427819">0.4%</text>
 </svg>
