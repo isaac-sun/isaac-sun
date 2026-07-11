@@ -58,12 +58,8 @@
 ## 📊  `$ htop --stats`
 
 <div align="center">
-  <a href="https://github.com/isaac-sun">
-    <img height="180" src="https://github-readme-stats.vercel.app/api?username=isaac-sun&show_icons=true&theme=radical&hide_border=true&bg_color=020617&title_color=22D3EE&icon_color=4ADE80&text_color=E2E8F0&rank_icon=github" alt="GitHub stats" />
-  </a>
-  <a href="https://github.com/isaac-sun">
-    <img height="180" src="https://github-readme-stats.vercel.app/api/top-langs/?username=isaac-sun&layout=compact&theme=radical&hide_border=true&bg_color=020617&title_color=22D3EE&text_color=E2E8F0&exclude_repo=isaac-sun.github.io" alt="Top languages" />
-  </a>
+  <img height="200" src="./assets/stats-overview.svg" alt="GitHub stats overview" />
+  <img height="200" src="./assets/stats-languages.svg" alt="Languages I build with" />
 </div>
 
 <br>
@@ -79,7 +75,7 @@
 ## 📈  `$ sar -A`
 
 <div align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=isaac-sun&bg_color=020617&color=4ade80&line=22d3ee&point=a78bfa&area=true&area_color=22d3ee&hide_border=true&custom_title=Contribution+Activity&border_radius=14" width="95%" alt="Contribution activity graph" />
+  <img src="./assets/activity-graph.svg" width="95%" alt="Contribution activity graph" />
 </div>
 
 <br>
@@ -180,7 +176,7 @@ open-source     building in public · learning by shipping
 <br>
 
 <div align="center">
-  <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical&border=true&quote=Talk+is+cheap.+Show+me+the+code.&author=Linus+Torvalds" alt="Dev quote" />
+  <img src="./assets/quote.svg" alt="Dev quote" />
 </div>
 
 <br>
