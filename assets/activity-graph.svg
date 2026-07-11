@@ -1,0 +1,31 @@
+<svg width="700" height="150" viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Contribution activity">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#06101f"/>
+      <stop offset="100%" stop-color="#0b1224"/>
+    </linearGradient>
+    <linearGradient id="neon" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#4ade80"/>
+    </linearGradient>
+    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="700" height="150" rx="14" fill="url(#bg)" stroke="url(#neon)" stroke-opacity="0.5" stroke-width="1.5"/>
+  <text x="20" y="28" font-family="'JetBrains Mono',monospace" font-size="12" fill="#94a3b8" letter-spacing="1">sar -A :: contribution activity</text>
+  <g stroke="#13233b" stroke-width="1">
+    <line x1="20" y1="60" x2="680" y2="60"/>
+    <line x1="20" y1="95" x2="680" y2="95"/>
+    <line x1="20" y1="130" x2="680" y2="130"/>
+  </g>
+  <path d="M20,120 L60,100 L100,110 L140,80 L180,95 L220,60 L260,85 L300,70 L340,90 L380,55 L420,75 L460,50 L500,80 L540,65 L580,45 L620,70 L660,55 L680,60 L680,135 L20,135 Z" fill="url(#area)"/>
+  <path d="M20,120 L60,100 L100,110 L140,80 L180,95 L220,60 L260,85 L300,70 L340,90 L380,55 L420,75 L460,50 L500,80 L540,65 L580,45 L620,70 L660,55 L680,60" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linejoin="round"/>
+  <g fill="#a78bfa">
+    <circle cx="220" cy="60" r="3"/>
+    <circle cx="380" cy="55" r="3"/>
+    <circle cx="460" cy="50" r="3"/>
+    <circle cx="580" cy="45" r="3"/>
+  </g>
+</svg>
