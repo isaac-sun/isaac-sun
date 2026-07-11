@@ -55,17 +55,6 @@ I study how learning systems can stay useful when data and compute are distribut
 
 <img src="./assets/neon-divider.svg" width="100%" alt="" />
 
-## `ls projects/`
-
-| Project | Focus | Built with |
-| --- | --- | --- |
-| **[Chest X-ray FL](https://github.com/isaac-sun/Chest-X-ray-Pneumonia-Classification-with-Centralized---Federated-Learning)** | A rigorous centralized-vs-FedAvg study for pneumonia classification: non-IID clients, Grad-CAM, and evaluation tooling. | `Python` · `PyTorch` |
-| **[FedFree](https://github.com/isaac-sun/fedfree)** | A free-rider defense using two-phase, per-class Shapley values with DistilBERT + LoRA/PEFT. | `Python` · `PyTorch` · `PEFT` |
-| **[CS & AI Notes](https://github.com/isaac-sun/cs-ai-learning-notes)** | A living set of notes on mathematical foundations, algorithms, and machine learning built from first principles. | `LaTeX` · `Notes` |
-| **[isaac-sun.github.io](https://github.com/isaac-sun/isaac-sun.github.io)** | Personal website and blog, deployed with GitHub Pages. | `HTML` |
-
-<img src="./assets/neon-divider.svg" width="100%" alt="" />
-
 ## `stack --current`
 
 <div align="center">
