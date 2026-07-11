@@ -1,10 +1,14 @@
-name: Update profile cards
+name: Refresh live profile signals
 
 on:
   schedule:
     # 02:13 Beijing time (18:13 UTC) every day
     - cron: "13 18 * * *"
   workflow_dispatch:
+
+concurrency:
+  group: profile-signal-refresh
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -23,9 +27,9 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.x"
+          python-version: "3.12"
 
-      - name: Generate cards
+      - name: Generate daily GitHub data cards
         run: python3 scripts/gen_cards.py
 
       - name: Commit and push if changed
@@ -36,6 +40,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "chore: auto-update profile cards [skip ci]"
+            git commit -m "chore: refresh live profile signals [skip ci]"
             git push
           fi

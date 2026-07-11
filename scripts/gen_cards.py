@@ -10,7 +10,7 @@ In CI:        same command, authenticated with GITHUB_TOKEN.
 import json
 import subprocess
 import sys
-from datetime import datetime
+from datetime import date, datetime, timezone
 
 OWNER = "isaac-sun"
 ASSETS = "assets"
@@ -83,34 +83,57 @@ def esc(s):
 
 
 # ---------------------------------------------------------------------------
-# Card 1: contribution activity (area/line chart, real daily counts)
+# Card 1: contribution activity (52-week heatmap from live GitHub data)
 # ---------------------------------------------------------------------------
+def contribution_color(count, maximum):
+    if count == 0:
+        return "#102039"
+    ratio = count / maximum
+    if ratio <= 0.25:
+        return "#0e7490"
+    if ratio <= 0.5:
+        return "#0891b2"
+    if ratio <= 0.75:
+        return "#22d3ee"
+    return "#4ade80"
+
+
+def longest_streak(counts):
+    best = current = 0
+    for count in counts:
+        current = current + 1 if count else 0
+        best = max(best, current)
+    return best
+
+
 def render_activity(total, days):
-    counts = [c for _, c in days]
-    n = len(counts)
-    x0, x1 = 20, 680
-    ytop, ybot = 45, 135
-    plot_w = x1 - x0
-    plot_h = ybot - ytop
-    maxc = max(counts) if counts else 1
-    ymax = max(maxc, 4)
+    weeks = [days[index:index + 7] for index in range(0, len(days), 7)]
+    counts = [count for _, count in days]
+    maximum = max(counts, default=1)
+    active_days = sum(count > 0 for count in counts)
+    month_labels = []
+    cells = []
 
-    pts = []
-    for i, c in enumerate(counts):
-        x = x0 + (i / (n - 1)) * plot_w
-        y = ybot - (c / ymax) * plot_h
-        pts.append((round(x, 1), round(y, 1)))
+    for week_index, week in enumerate(weeks):
+        x = 118 + week_index * 14
+        for day_index, (day_string, count) in enumerate(week):
+            day = date.fromisoformat(day_string)
+            y = 94 + day_index * 16
+            if day.day <= 7 and (not month_labels or month_labels[-1] != day.strftime("%b")):
+                month_labels.append(day.strftime("%b"))
+                cells.append(
+                    f'<text x="{x}" y="82" font-family="\'JetBrains Mono\',monospace" '
+                    f'font-size="10" fill="#64748b">{day.strftime("%b")}</text>'
+                )
+            cells.append(
+                f'<rect x="{x}" y="{y}" width="11" height="11" rx="3" '
+                f'fill="{contribution_color(count, maximum)}">'
+                f'<title>{day_string}: {count} contribution{("s" if count != 1 else "")}</title></rect>'
+            )
 
-    line = " ".join("L%.1f,%.1f" % (x, y) if i else "M%.1f,%.1f" % (x, y)
-                    for i, (x, y) in enumerate(pts))
-    area = "%s L%.1f,%.1f L%.1f,%.1f Z" % (line, x1, ybot, x0, ybot)
-
-    # longest streak marker (peak day)
-    peak_i = counts.index(maxc)
-    px, py = pts[peak_i]
-
+    synced_at = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     start, end = days[0][0], days[-1][0]
-    return f'''<svg width="700" height="150" viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Contribution activity">
+    return f'''<svg width="900" height="250" viewBox="0 0 900 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GitHub contribution activity for the last 52 weeks">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#06101f"/>
@@ -120,24 +143,28 @@ def render_activity(total, days):
       <stop offset="0%" stop-color="#22d3ee"/>
       <stop offset="100%" stop-color="#4ade80"/>
     </linearGradient>
-    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.45"/>
-      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
-    </linearGradient>
   </defs>
-  <rect width="700" height="150" rx="14" fill="url(#bg)" stroke="url(#neon)" stroke-opacity="0.5" stroke-width="1.5"/>
-  <text x="20" y="28" font-family="'JetBrains Mono',monospace" font-size="12" fill="#94a3b8" letter-spacing="1">sar -A :: contribution activity</text>
-  <g stroke="#13233b" stroke-width="1">
-    <line x1="20" y1="{ytop}" x2="680" y2="{ytop}"/>
-    <line x1="20" y1="{ybot-plot_h//2}" x2="680" y2="{ybot-plot_h//2}"/>
-    <line x1="20" y1="{ybot}" x2="680" y2="{ybot}"/>
-  </g>
-  <path d="{area}" fill="url(#area)"/>
-  <path d="{line}" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-  <circle cx="{px}" cy="{py}" r="3.5" fill="#a78bfa"/>
-  <text x="680" y="44" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#64748b">peak {maxc}/day</text>
-  <text x="20" y="148" font-family="'JetBrains Mono',monospace" font-size="10" fill="#64748b">{start} → {end}</text>
-  <text x="680" y="148" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#22d3ee">{total} contributions</text>
+  <rect width="900" height="250" rx="16" fill="url(#bg)" stroke="url(#neon)" stroke-opacity="0.5" stroke-width="1.5"/>
+  <text x="24" y="30" font-family="'JetBrains Mono','Fira Code',monospace" font-size="12" fill="#94a3b8" letter-spacing="1.2">ACTIVITY PULSE  //  LAST 52 WEEKS</text>
+  <text x="876" y="30" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#64748b">SYNC {synced_at}</text>
+  <line x1="24" y1="46" x2="876" y2="46" stroke="#1e293b"/>
+  <text x="24" y="70" font-family="'JetBrains Mono',monospace" font-size="17" font-weight="700" fill="#4ade80">{total}</text>
+  <text x="24" y="86" font-family="'JetBrains Mono',monospace" font-size="10" fill="#64748b">CONTRIBUTIONS</text>
+  <text x="24" y="122" font-family="'JetBrains Mono',monospace" font-size="17" font-weight="700" fill="#22d3ee">{active_days}</text>
+  <text x="24" y="138" font-family="'JetBrains Mono',monospace" font-size="10" fill="#64748b">ACTIVE DAYS</text>
+  <text x="24" y="174" font-family="'JetBrains Mono',monospace" font-size="17" font-weight="700" fill="#c4b5fd">{longest_streak(counts)}d</text>
+  <text x="24" y="190" font-family="'JetBrains Mono',monospace" font-size="10" fill="#64748b">BEST STREAK</text>
+  <text x="98" y="103" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#64748b">Sun</text>
+  <text x="98" y="135" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#64748b">Tue</text>
+  <text x="98" y="167" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#64748b">Thu</text>
+{chr(10).join(cells)}
+  <text x="118" y="228" font-family="'JetBrains Mono',monospace" font-size="10" fill="#64748b">{start} → {end}</text>
+  <text x="876" y="228" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#64748b">LESS</text>
+  <rect x="816" y="219" width="10" height="10" rx="3" fill="#102039"/>
+  <rect x="830" y="219" width="10" height="10" rx="3" fill="#0e7490"/>
+  <rect x="844" y="219" width="10" height="10" rx="3" fill="#0891b2"/>
+  <rect x="858" y="219" width="10" height="10" rx="3" fill="#22d3ee"/>
+  <rect x="872" y="219" width="10" height="10" rx="3" fill="#4ade80"/>
 </svg>
 '''
 
