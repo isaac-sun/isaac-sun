@@ -5,8 +5,8 @@
 <br>
 
 <div align="center">
-  <a href="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=22&duration=2800&pause=1200&color=4ADE80&center=true&vCenter=true&multiline=false&width=780&height=40&lines=%24+whoami+--verbose;Federated+Learning+Researcher;AI+Systems+%7C+Model+Optimization;Full-Stack+Engineer+%2F+Builder;Always+be+shipping.">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=22&duration=2800&pause=1200&color=4ADE80&center=true&vCenter=true&multiline=false&width=780&height=40&lines=%24+whoami+--verbose;Federated+Learning+Researcher;AI+Systems+%7C+Model+Optimization;Full-Stack+Engineer+%2F+Builder;Always+be+shipping." alt="Animated typing intro" />
+  <a href="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=22&duration=2800&pause=1200&color=4ADE80&center=true&vCenter=true&multiline=false&width=780&height=40&lines=%24+whoami+--verbose;CS+%2B+AI+Undergrad+%40+UNNC;Federated+Learning+%26+AI+Systems;PyTorch+%C2%B7+Open+Source+Builder;Always+be+shipping.">
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=22&duration=2800&pause=1200&color=4ADE80&center=true&vCenter=true&multiline=false&width=780&height=40&lines=%24+whoami+--verbose;CS+%2B+AI+Undergrad+%40+UNNC;Federated+Learning+%26+AI+Systems;PyTorch+%C2%B7+Open+Source+Builder;Always+be+shipping." alt="Animated typing intro" />
   </a>
 </div>
 
@@ -18,6 +18,9 @@
   </a>
   <a href="https://www.linkedin.com/in/isaac-sun/">
     <img src="https://img.shields.io/badge/LinkedIn-Yinan_SUN-0B1220?style=for-the-badge&logo=linkedin&logoColor=22D3EE&labelColor=020617" alt="LinkedIn" />
+  </a>
+  <a href="https://isaac-sun.github.io">
+    <img src="https://img.shields.io/badge/Website-isaac--sun.github.io-0B1220?style=for-the-badge&logo=githubpages&logoColor=F472B6&labelColor=020617" alt="Website" />
   </a>
   <a href="https://github.com/isaac-sun">
     <img src="https://img.shields.io/badge/GitHub-isaac--sun-0B1220?style=for-the-badge&logo=github&logoColor=A78BFA&labelColor=020617" alt="GitHub" />
@@ -41,12 +44,13 @@
 ```text
   isaac@github :: neural-shell
   ──────────────────────────────────────────────────────────
-  os           CS with Artificial Intelligence
+  name         Yinan SUN (isaac)
+  os           Computer Science + Artificial Intelligence
   university   University of Nottingham Ningbo China (UNNC)
   languages    Python · C · JavaScript · SQL · LaTeX · Haskell · Java · MIPS Assembly
-  location     Ningbo, China
-  focus        Federated Learning · AI Systems · Full-Stack Dev
-  status       [OPEN] Internship & research collaboration
+  location     Ningbo, China 🇨🇳
+  focus        Federated Learning · AI Systems · ML from scratch
+  status       [OPEN] Research collaboration & internships
 ```
 
 <br>
@@ -55,10 +59,10 @@
 
 <div align="center">
   <a href="https://github.com/isaac-sun">
-    <img height="195" src="https://raw.githubusercontent.com/isaac-sun/isaac-sun/output/stats-overview.svg" alt="GitHub stats overview" />
+    <img height="180" src="https://github-readme-stats.vercel.app/api?username=isaac-sun&show_icons=true&theme=radical&hide_border=true&bg_color=020617&title_color=22D3EE&icon_color=4ADE80&text_color=E2E8F0&rank_icon=github" alt="GitHub stats" />
   </a>
   <a href="https://github.com/isaac-sun">
-    <img height="195" src="https://raw.githubusercontent.com/isaac-sun/isaac-sun/output/stats-languages.svg" alt="Top languages" />
+    <img height="180" src="https://github-readme-stats.vercel.app/api/top-langs/?username=isaac-sun&layout=compact&theme=radical&hide_border=true&bg_color=020617&title_color=22D3EE&text_color=E2E8F0&exclude_repo=isaac-sun.github.io" alt="Top languages" />
   </a>
 </div>
 
@@ -82,58 +86,52 @@
 
 <img src="./assets/neon-divider.svg" width="100%" alt="" />
 
+## 🚀  `$ ls -la projects/`
+
+<div align="center">
+
+| Project | What it does | Stack | ★ |
+| --- | --- | --- | --- |
+| **[Chest X-ray FL](https://github.com/isaac-sun/Chest-X-ray-Pneumonia-Classification-with-Centralized---Federated-Learning)** | Centralized vs FedAvg pneumonia classification on chest X-rays — non-IID clients, Grad-CAM, full eval suite | `Python` · `PyTorch` | 1 |
+| **[FedFree](https://github.com/isaac-sun/fedfree)** | Free-rider defense in federated learning via two-phase per-class Shapley values (DistilBERT + LoRA/PEFT) | `Python` · `PyTorch` · `PEFT` | 0 |
+| **[CS & AI Notes](https://github.com/isaac-sun/cs-ai-learning-notes)** | Continuously evolving knowledge base — math foundations, algorithms, ML implemented from scratch | `Notes` · `LaTeX` | 3 |
+| **[isaac-sun.github.io](https://github.com/isaac-sun/isaac-sun.github.io)** | Personal website & blog, deployed with GitHub Pages | `HTML` | 1 |
+
+</div>
+
+<br>
+
+<img src="./assets/neon-divider.svg" width="100%" alt="" />
+
 ## 🛠  `$ cat skills.json`
 
 <br>
 
 <div align="center">
 
-### Languages
+### Core Stack
 <img src="https://img.shields.io/badge/Python-020617?style=for-the-badge&logo=python&logoColor=4ADE80" alt="Python" />
 <img src="https://img.shields.io/badge/C-020617?style=for-the-badge&logo=c&logoColor=22D3EE" alt="C" />
 <img src="https://img.shields.io/badge/JavaScript-020617?style=for-the-badge&logo=javascript&logoColor=F7DF1E" alt="JavaScript" />
-<img src="https://img.shields.io/badge/TypeScript-020617?style=for-the-badge&logo=typescript&logoColor=3178C6" alt="TypeScript" />
 <img src="https://img.shields.io/badge/SQL-020617?style=for-the-badge&logo=sqlite&logoColor=A78BFA" alt="SQL" />
 <img src="https://img.shields.io/badge/LaTeX-020617?style=for-the-badge&logo=latex&logoColor=E2E8F0" alt="LaTeX" />
-<img src="https://img.shields.io/badge/Haskell-020617?style=for-the-badge&logo=haskell&logoColor=A78BFA" alt="Haskell" />
-<img src="https://img.shields.io/badge/Java-020617?style=for-the-badge&logo=openjdk&logoColor=ED8B00" alt="Java" />
-<img src="https://img.shields.io/badge/MIPS_Assembly-020617?style=for-the-badge&logoColor=94A3B8&color=020617" alt="MIPS Assembly" />
+<img src="https://img.shields.io/badge/Git-020617?style=for-the-badge&logo=git&logoColor=F05032" alt="Git" />
+<img src="https://img.shields.io/badge/Linux-020617?style=for-the-badge&logo=linux&logoColor=FCC624" alt="Linux" />
+<img src="https://img.shields.io/badge/PyTorch-020617?style=for-the-badge&logo=pytorch&logoColor=EE4C2C" alt="PyTorch" />
 
 <br>
 
-### Frameworks &amp; Libraries
+### Exploring & Learning
+<img src="https://img.shields.io/badge/TypeScript-020617?style=for-the-badge&logo=typescript&logoColor=3178C6" alt="TypeScript" />
 <img src="https://img.shields.io/badge/Vue.js-020617?style=for-the-badge&logo=vue.js&logoColor=4FC08D" alt="Vue.js" />
 <img src="https://img.shields.io/badge/React-020617?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
+<img src="https://img.shields.io/badge/Tailwind_CSS-020617?style=for-the-badge&logo=tailwindcss&logoColor=22D3EE" alt="Tailwind CSS" />
 <img src="https://img.shields.io/badge/Flask-020617?style=for-the-badge&logo=flask&logoColor=E2E8F0" alt="Flask" />
-<img src="https://img.shields.io/badge/HTML5-020617?style=for-the-badge&logo=html5&logoColor=E34F26" alt="HTML5" />
-<img src="https://img.shields.io/badge/CSS3-020617?style=for-the-badge&logo=css3&logoColor=1572B6" alt="CSS3" />
-<img src="https://img.shields.io/badge/Tailwind-020617?style=for-the-badge&logo=tailwindcss&logoColor=22D3EE" alt="Tailwind CSS" />
-
-<br>
-
-### Tools &amp; Platforms
-<img src="https://img.shields.io/badge/Git-020617?style=for-the-badge&logo=git&logoColor=F05032" alt="Git" />
 <img src="https://img.shields.io/badge/Docker-020617?style=for-the-badge&logo=docker&logoColor=2496ED" alt="Docker" />
-<img src="https://img.shields.io/badge/Linux-020617?style=for-the-badge&logo=linux&logoColor=FCC624" alt="Linux" />
-<img src="https://img.shields.io/badge/VS_Code-020617?style=for-the-badge&logo=visual-studio-code&logoColor=22D3EE" alt="VS Code" />
-<img src="https://img.shields.io/badge/SQLite-020617?style=for-the-badge&logo=sqlite&logoColor=A78BFA" alt="SQLite" />
-<img src="https://img.shields.io/badge/PyTorch-020617?style=for-the-badge&logo=pytorch&logoColor=EE4C2C" alt="PyTorch" />
 
 </div>
 
 <br>
-
-## 🚀  `$ ls -la projects/`
-
-```text
-drwxr-xr-x  project-alpha    [in_progress]  Federated Learning framework · Python · PyTorch
-drwxr-xr-x  project-beta     [planned    ]  AI-powered full-stack app · Vue · Flask · SQLite
-drwxr-xr-x  project-gamma    [completed  ]  Personal website & blog · React · Tailwind
-```
-
-<br>
-
-<img src="./assets/neon-divider.svg" width="100%" alt="" />
 
 ## 🐍  `$ python3 contrib-snake.py`
 
@@ -150,12 +148,12 @@ drwxr-xr-x  project-gamma    [completed  ]  Personal website & blog · React · 
 ## 🗺  `$ cat roadmap.txt`
 
 ```text
-# 2026 Goals
+# 2026 Roadmap
 # ──────────────────────────────────────────────────────────────────
-  Q1  →  publish end-to-end federated learning project with docs
-  Q2  →  make a meaningful contribution to open-source AI tooling
-  Q3  →  ship a production-ready full-stack side project
-  Q4  →  publish technical notes on systems design and ML
+  Q1  ✅  publish centralized-vs-federated X-ray pipeline
+  Q2  ✅  ship FedFree free-rider defense + Colab demo
+  Q3  →  contribute to open-source AI tooling
+  Q4  →  publish systems-design & ML write-ups
 ```
 
 <br>
