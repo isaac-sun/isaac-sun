@@ -3,7 +3,7 @@
 </div>
 
 <div align="center">
-  <sub><b>Computer Science + AI @ UNNC</b> &nbsp;•&nbsp; Federated Learning &nbsp;•&nbsp; AI Systems &nbsp;•&nbsp; Open Source</sub>
+  <sub><b>Computer Science + AI @ UoN </b> &nbsp;•&nbsp; Federated Learning &nbsp;•&nbsp; AI Systems &nbsp;•&nbsp; Open Source</sub>
 </div>
 
 <br />
@@ -28,8 +28,8 @@
 
 ```toml
 name       = "Yinan SUN (isaac)"
-location   = "Ningbo, China"
-education  = "Computer Science + Artificial Intelligence, UNNC"
+location   = "Nottingham, United Kingdom"
+education  = "Computer Science + Artificial Intelligence, UoN"
 focus      = ["Federated Learning", "AI Systems", "ML from scratch"]
 currently  = "Open to research collaboration and internships"
 ```
