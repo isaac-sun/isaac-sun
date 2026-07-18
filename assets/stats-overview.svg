@@ -24,15 +24,15 @@
   <text x="380" y="124" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="15" font-weight="700" fill="#22d3ee">9</text>
   <line x1="20" y1="134" x2="380" y2="134" stroke="#13233b" stroke-width="1"/>
   <text x="20" y="146" font-family="'JetBrains Mono',monospace" font-size="12" fill="#94a3b8">Followers</text>
-  <text x="380" y="146" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="15" font-weight="700" fill="#4ade80">7</text>
+  <text x="380" y="146" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="15" font-weight="700" fill="#4ade80">8</text>
   <line x1="20" y1="156" x2="380" y2="156" stroke="#13233b" stroke-width="1"/>
   <text x="20" y="168" font-family="'JetBrains Mono',monospace" font-size="12" fill="#94a3b8">Following</text>
-  <text x="380" y="168" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="15" font-weight="700" fill="#f472b6">7</text>
+  <text x="380" y="168" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="15" font-weight="700" fill="#f472b6">9</text>
   <line x1="20" y1="178" x2="380" y2="178" stroke="#13233b" stroke-width="1"/>
   <text x="20" y="190" font-family="'JetBrains Mono',monospace" font-size="12" fill="#94a3b8">Stars Earned</text>
   <text x="380" y="190" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="15" font-weight="700" fill="#a78bfa">9</text>
   <line x1="20" y1="200" x2="380" y2="200" stroke="#13233b" stroke-width="1"/>
   <text x="20" y="212" font-family="'JetBrains Mono',monospace" font-size="12" fill="#94a3b8">Starred</text>
-  <text x="380" y="212" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="15" font-weight="700" fill="#f7df1e">17</text>
+  <text x="380" y="212" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="15" font-weight="700" fill="#f7df1e">18</text>
   <line x1="20" y1="222" x2="380" y2="222" stroke="#13233b" stroke-width="1"/>
 </svg>
