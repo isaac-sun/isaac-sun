@@ -33,6 +33,6 @@
   <text x="380" y="190" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="15" font-weight="700" fill="#a78bfa">9</text>
   <line x1="20" y1="200" x2="380" y2="200" stroke="#13233b" stroke-width="1"/>
   <text x="20" y="212" font-family="'JetBrains Mono',monospace" font-size="12" fill="#94a3b8">Starred</text>
-  <text x="380" y="212" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="15" font-weight="700" fill="#f7df1e">18</text>
+  <text x="380" y="212" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="15" font-weight="700" fill="#f7df1e">19</text>
   <line x1="20" y1="222" x2="380" y2="222" stroke="#13233b" stroke-width="1"/>
 </svg>
