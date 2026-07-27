@@ -27,19 +27,28 @@ LANG_COLORS = {
 }
 
 
-def gh_api(args):
+def gh_api(args, required=True):
+    """Call `gh api`. On failure: exit if required, else return None."""
     cmd = ["gh", "api"] + args
     res = subprocess.run(cmd, capture_output=True, text=True)
     if res.returncode != 0:
-        sys.exit("gh api failed: " + res.stderr.strip())
+        err = (res.stderr or res.stdout or "unknown error").strip()
+        if required:
+            sys.exit(f"gh api failed ({' '.join(args[:2])}): {err}")
+        print(f"warn: gh api failed ({' '.join(args[:3])}): {err}", file=sys.stderr)
+        return None
     return res.stdout
 
 
 def get_contrib():
-    q = ('{ user(login:"%s"){ contributionsCollection { contributionCalendar '
-         '{ totalContributions weeks { contributionDays { date contributionCount } } } } } }' % OWNER)
-    cal = json.loads(gh_api(["graphql", "-f", "query=" + q]))["data"]["user"][
-        "contributionsCollection"]["contributionCalendar"]
+    # Public contribution calendar — works with default GITHUB_TOKEN.
+    q = (
+        '{ user(login:"%s"){ contributionsCollection { contributionCalendar '
+        '{ totalContributions weeks { contributionDays { date contributionCount } } } } } }'
+        % OWNER
+    )
+    raw = gh_api(["graphql", "-f", "query=" + q], required=True)
+    cal = json.loads(raw)["data"]["user"]["contributionsCollection"]["contributionCalendar"]
     days = []
     for w in cal["weeks"]:
         for d in w["contributionDays"]:
@@ -48,10 +57,16 @@ def get_contrib():
 
 
 def get_stats():
-    q = ('{ user(login:"%s"){ followers{totalCount} following{totalCount} '
-         'repositories(first:100,ownerAffiliations:OWNER,isFork:false){totalCount '
-         'nodes{name stargazers{totalCount}}} starredRepositories{totalCount} } }' % OWNER)
-    u = json.loads(gh_api(["graphql", "-f", "query=" + q]))["data"]["user"]
+    # privacy:PUBLIC keeps the Actions GITHUB_TOKEN away from private repos
+    # (e.g. 20NEWS-FL) that would otherwise raise "Resource not accessible by integration".
+    q = (
+        '{ user(login:"%s"){ followers{totalCount} following{totalCount} '
+        'repositories(first:100,ownerAffiliations:OWNER,isFork:false,privacy:PUBLIC){'
+        'totalCount nodes{name stargazers{totalCount}}} '
+        'starredRepositories{totalCount} } }' % OWNER
+    )
+    raw = gh_api(["graphql", "-f", "query=" + q], required=True)
+    u = json.loads(raw)["data"]["user"]
     repos = u["repositories"]["nodes"]
     stars = sum(r["stargazers"]["totalCount"] for r in repos)
     return {
@@ -69,12 +84,17 @@ def get_languages(stats):
     for name in stats["repo_names"]:
         if name in EXCLUDE_REPOS:
             continue
+        raw = gh_api(["repos/%s/%s/languages" % (OWNER, name)], required=False)
+        if not raw:
+            continue
         try:
-            langs = json.loads(gh_api(["repos/%s/%s/languages" % (OWNER, name)]))
-        except SystemExit:
+            langs = json.loads(raw)
+        except json.JSONDecodeError:
+            continue
+        if not isinstance(langs, dict):
             continue
         for k, v in langs.items():
-            totals[k] = totals.get(k, 0) + v
+            totals[k] = totals.get(k, 0) + int(v or 0)
     return totals
 
 
