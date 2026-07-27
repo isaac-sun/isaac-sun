@@ -8,8 +8,8 @@ Run locally:  python3 scripts/gen_cards.py
 In CI:        same command, authenticated with GITHUB_TOKEN.
 """
 import json
-import subprocess
-import sys
+import re
+import urllib.request
 from datetime import date, datetime, timezone
 
 OWNER = "isaac-sun"
@@ -27,55 +27,48 @@ LANG_COLORS = {
 }
 
 
-def gh_api(args, required=True):
-    """Call `gh api`. On failure: exit if required, else return None."""
-    cmd = ["gh", "api"] + args
-    res = subprocess.run(cmd, capture_output=True, text=True)
-    if res.returncode != 0:
-        err = (res.stderr or res.stdout or "unknown error").strip()
-        if required:
-            sys.exit(f"gh api failed ({' '.join(args[:2])}): {err}")
-        print(f"warn: gh api failed ({' '.join(args[:3])}): {err}", file=sys.stderr)
-        return None
-    return res.stdout
+def get_json(path):
+    """Fetch public GitHub REST data without the restricted Actions token."""
+    request = urllib.request.Request(
+        f"https://api.github.com{path}",
+        headers={
+            "Accept": "application/vnd.github+json",
+            "User-Agent": "isaac-sun-profile-card-generator",
+            "X-GitHub-Api-Version": "2022-11-28",
+        },
+    )
+    with urllib.request.urlopen(request, timeout=20) as response:
+        return json.load(response)
 
 
 def get_contrib():
-    # Public contribution calendar — works with default GITHUB_TOKEN.
-    q = (
-        '{ user(login:"%s"){ contributionsCollection { contributionCalendar '
-        '{ totalContributions weeks { contributionDays { date contributionCount } } } } } }'
-        % OWNER
+    # This public endpoint exposes the rendered calendar. data-level is the
+    # public intensity level (0–4), sufficient for the heatmap and streaks.
+    request = urllib.request.Request(
+        f"https://github.com/users/{OWNER}/contributions",
+        headers={"User-Agent": "isaac-sun-profile-card-generator"},
     )
-    raw = gh_api(["graphql", "-f", "query=" + q], required=True)
-    cal = json.loads(raw)["data"]["user"]["contributionsCollection"]["contributionCalendar"]
-    days = []
-    for w in cal["weeks"]:
-        for d in w["contributionDays"]:
-            days.append((d["date"], d["contributionCount"]))
-    return cal["totalContributions"], days
+    with urllib.request.urlopen(request, timeout=20) as response:
+        page = response.read().decode("utf-8")
+    pairs = re.findall(r'data-date="([^"]+)"[^>]*data-level="([0-4])"', page)
+    days = [(day, int(level)) for day, level in pairs]
+    if not days:
+        raise RuntimeError("GitHub returned no public contribution-calendar data")
+    return sum(count for _, count in days), days
 
 
 def get_stats():
-    # privacy:PUBLIC keeps the Actions GITHUB_TOKEN away from private repos
-    # (e.g. 20NEWS-FL) that would otherwise raise "Resource not accessible by integration".
-    q = (
-        '{ user(login:"%s"){ followers{totalCount} following{totalCount} '
-        'repositories(first:100,ownerAffiliations:OWNER,isFork:false,privacy:PUBLIC){'
-        'totalCount nodes{name stargazers{totalCount}}} '
-        'starredRepositories{totalCount} } }' % OWNER
-    )
-    raw = gh_api(["graphql", "-f", "query=" + q], required=True)
-    u = json.loads(raw)["data"]["user"]
-    repos = u["repositories"]["nodes"]
-    stars = sum(r["stargazers"]["totalCount"] for r in repos)
+    user = get_json(f"/users/{OWNER}")
+    repos = get_json(f"/users/{OWNER}/repos?per_page=100&type=owner")
+    public_repos = [repo for repo in repos if not repo.get("fork") and not repo.get("private")]
+    stars = sum(int(repo.get("stargazers_count") or 0) for repo in public_repos)
     return {
-        "followers": u["followers"]["totalCount"],
-        "following": u["following"]["totalCount"],
-        "repos": u["repositories"]["totalCount"],
+        "followers": user["followers"],
+        "following": user["following"],
+        "repos": len(public_repos),
         "stars": stars,
-        "starred": u["starredRepositories"]["totalCount"],
-        "repo_names": [r["name"] for r in repos],
+        "starred": 0,
+        "repo_names": [repo["name"] for repo in public_repos],
     }
 
 
@@ -84,17 +77,13 @@ def get_languages(stats):
     for name in stats["repo_names"]:
         if name in EXCLUDE_REPOS:
             continue
-        raw = gh_api(["repos/%s/%s/languages" % (OWNER, name)], required=False)
-        if not raw:
-            continue
         try:
-            langs = json.loads(raw)
-        except json.JSONDecodeError:
+            langs = get_json(f"/repos/{OWNER}/{name}/languages")
+        except Exception as error:
+            print(f"warn: unable to fetch languages for {name}: {error}")
             continue
-        if not isinstance(langs, dict):
-            continue
-        for k, v in langs.items():
-            totals[k] = totals.get(k, 0) + int(v or 0)
+        for language, byte_count in langs.items():
+            totals[language] = totals.get(language, 0) + int(byte_count or 0)
     return totals
 
 
