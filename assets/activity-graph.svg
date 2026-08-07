@@ -11,7 +11,7 @@
   </defs>
   <rect width="900" height="250" rx="16" fill="url(#bg)" stroke="url(#neon)" stroke-opacity="0.5" stroke-width="1.5"/>
   <text x="24" y="30" font-family="'JetBrains Mono','Fira Code',monospace" font-size="12" fill="#94a3b8" letter-spacing="1.2">ACTIVITY PULSE  //  LAST 52 WEEKS</text>
-  <text x="876" y="30" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#64748b">SYNC 2026-08-07 00:15 UTC</text>
+  <text x="876" y="30" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#64748b">SYNC 2026-08-07 19:14 UTC</text>
   <line x1="24" y1="46" x2="876" y2="46" stroke="#1e293b"/>
   <text x="24" y="70" font-family="'JetBrains Mono',monospace" font-size="17" font-weight="700" fill="#4ade80">61</text>
   <text x="24" y="86" font-family="'JetBrains Mono',monospace" font-size="10" fill="#64748b">CONTRIBUTIONS</text>
