@@ -24,7 +24,7 @@
   <text x="380" y="124" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="15" font-weight="700" fill="#22d3ee">9</text>
   <line x1="20" y1="134" x2="380" y2="134" stroke="#13233b" stroke-width="1"/>
   <text x="20" y="146" font-family="'JetBrains Mono',monospace" font-size="12" fill="#94a3b8">Followers</text>
-  <text x="380" y="146" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="15" font-weight="700" fill="#4ade80">9</text>
+  <text x="380" y="146" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="15" font-weight="700" fill="#4ade80">10</text>
   <line x1="20" y1="156" x2="380" y2="156" stroke="#13233b" stroke-width="1"/>
   <text x="20" y="168" font-family="'JetBrains Mono',monospace" font-size="12" fill="#94a3b8">Following</text>
   <text x="380" y="168" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="15" font-weight="700" fill="#f472b6">11</text>
