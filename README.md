@@ -44,7 +44,6 @@ I study how learning systems can stay useful when data and compute are distribut
 | :--- | :--- | :--- |
 | [**omp-api-manager**](https://github.com/isaac-sun/omp-api-manager) | Local-first macOS app for AI provider management, localhost gateway routing, and private usage tracking | Swift · SwiftUI |
 | [**fedfree**](https://github.com/isaac-sun/fedfree) | Two-stage free-rider detection in federated learning via per-class Shapley values | Python · PyTorch |
-| [**morfeus**](https://github.com/isaac-sun/morfeus) | Desired-state control plane for autonomous workloads | Python |
 | [**chest-xray-federated-learning**](https://github.com/isaac-sun/chest-xray-federated-learning) | Centralized vs. federated pneumonia classification on chest X-rays | Python · PyTorch |
 | [**BookVault**](https://github.com/isaac-sun/BookVault) | Terminal bookstore inventory CLI with binary persistence | C |
 
