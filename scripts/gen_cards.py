@@ -1,74 +1,113 @@
 #!/usr/bin/env python3
-"""Generate themed, self-contained SVG cards for the isaac-sun profile README.
+"""Generate the pixel-art SVGs for the isaac-sun profile README.
 
-All data is pulled live from the GitHub API via `gh`, so the cards stay
-accurate without depending on any external image host (China-friendly).
+Data comes from GitHub's public REST API and the public contribution
+calendar, so no third-party image host is involved (China-friendly).
+Every image is written twice, as <name>-dark.svg and <name>-light.svg.
 
 Run locally:  python3 scripts/gen_cards.py
-In CI:        same command, authenticated with GITHUB_TOKEN.
+In CI:        same command (see .github/workflows/update-cards.yml).
 """
 import json
+import os
 import re
 import urllib.request
-from datetime import date, datetime, timezone
+from datetime import date
+
+from pixelfont import pixel_text as px, sprite, width
 
 OWNER = "isaac-sun"
-ASSETS = "assets"
+ASSETS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets")
 # Repos that contain no meaningful code language for the breakdown.
 EXCLUDE_REPOS = {"isaac-sun", "isaac-sun.github.io"}
+USER_AGENT = "isaac-sun-profile-card-generator"
 
-# GitHub-ish linguist colors; unknown languages fall back to gray.
-LANG_COLORS = {
-    "Python": "#3572A5", "C": "#555555", "C++": "#f34b7d", "JavaScript": "#f1e05a",
-    "TypeScript": "#3178c6", "HTML": "#e34c26", "CSS": "#563d7c",
-    "Jupyter Notebook": "#DA5B0B", "Shell": "#89e051", "Vue": "#41b883",
-    "Java": "#b07219", "Haskell": "#5e5086", "Lua": "#000080",
-    "CMake": "#DA3434", "Dockerfile": "#384d54", "Makefile": "#427819",
+THEMES = {  # Sweetie-16 palette
+    "dark": {"bg": "#1a1c2c", "panel": "#29366f", "frame": "#f4f4f4", "text": "#f4f4f4", "muted": "#94b0c2",
+             "yellow": "#ffcd75", "green": "#a7f070", "heart": "#b13e53", "shadow": "#0b0c16",
+             "brick": "#566c86", "mortar": "#333c57", "star": "#f4f4f4", "seg_off": "#333c57",
+             "heat": ["#333c57", "#257179", "#38b764", "#a7f070", "#ffcd75"]},
+    "light": {"bg": "#f4f4f4", "panel": "#ffffff", "frame": "#1a1c2c", "text": "#1a1c2c", "muted": "#566c86",
+              "yellow": "#ef7d57", "green": "#38b764", "heart": "#b13e53", "shadow": "#94b0c2",
+              "brick": "#ef7d57", "mortar": "#b13e53", "star": "#94b0c2", "seg_off": "#e2e8ee",
+              "heat": ["#e2e8ee", "#a7f070", "#38b764", "#257179", "#29366f"]},
 }
+CRISP = 'shape-rendering="crispEdges"'
+SHORT_NAMES = {"Jupyter Notebook": "JUPYTER"}
+
+HERO = [  # 16×16 player sprite
+    "................",
+    ".....KKKKKK.....",
+    "....KHHHHHHK....",
+    "...KHHHHHHHHK...",
+    "...KHSSSSSSHK...",
+    "...KSSKSSKSSK...",
+    "...KSSSSSSSSK...",
+    "....KSSRRSSK....",
+    ".....KKKKKK.....",
+    "...KKBBBBBBKK...",
+    "..KBBBBBBBBBBK..",
+    "..KBKLLLLLLKBK..",
+    "..KSKLWWWWLKSK..",
+    "..KKKLWWWWLKKK..",
+    "....KLLLLLLK....",
+    "....KKKKKKKK....",
+]
+HERO_PALETTE = {"K": "#0b0c16", "H": "#5d275d", "S": "#f4c9a0", "R": "#b13e53",
+                "B": "#3b5dc9", "L": "#94b0c2", "W": "#73eff7"}
+
+
+# ---------------------------------------------------------------------------
+# Data
+# ---------------------------------------------------------------------------
+def fetch(url):
+    request = urllib.request.Request(url, headers={
+        "Accept": "application/vnd.github+json",
+        "User-Agent": USER_AGENT,
+        "X-GitHub-Api-Version": "2022-11-28",
+    })
+    with urllib.request.urlopen(request, timeout=20) as response:
+        return response.read().decode("utf-8")
 
 
 def get_json(path):
-    """Fetch public GitHub REST data without the restricted Actions token."""
-    request = urllib.request.Request(
-        f"https://api.github.com{path}",
-        headers={
-            "Accept": "application/vnd.github+json",
-            "User-Agent": "isaac-sun-profile-card-generator",
-            "X-GitHub-Api-Version": "2022-11-28",
-        },
-    )
-    with urllib.request.urlopen(request, timeout=20) as response:
-        return json.load(response)
+    return json.loads(fetch(f"https://api.github.com{path}"))
 
 
 def get_contrib():
-    # This public endpoint exposes the rendered calendar. data-level is the
-    # public intensity level (0–4), sufficient for the heatmap and streaks.
-    request = urllib.request.Request(
-        f"https://github.com/users/{OWNER}/contributions",
-        headers={"User-Agent": "isaac-sun-profile-card-generator"},
-    )
-    with urllib.request.urlopen(request, timeout=20) as response:
-        page = response.read().decode("utf-8")
-    pairs = re.findall(r'data-date="([^"]+)"[^>]*data-level="([0-4])"', page)
-    days = [(day, int(level)) for day, level in pairs]
+    """Return [(date, count, level)] in chronological order.
+
+    The calendar HTML lists cells row by row (all Sundays, then all Mondays…),
+    with the real count in a separate <tool-tip for="cell-id">, so both are
+    joined by id and then sorted by date.
+    """
+    page = fetch(f"https://github.com/users/{OWNER}/contributions")
+    cells = {}
+    for tag in re.findall(r"<td\b[^>]*ContributionCalendar-day[^>]*>", page):
+        day = re.search(r'data-date="([^"]+)"', tag)
+        cid = re.search(r'\bid="([^"]+)"', tag)
+        level = re.search(r'data-level="([0-4])"', tag)
+        if day and cid and level:
+            cells[cid.group(1)] = [day.group(1), 0, int(level.group(1))]
+    for cid, label in re.findall(r'<tool-tip\b[^>]*\bfor="([^"]+)"[^>]*>([^<]*)</tool-tip>', page):
+        count = re.match(r"\s*(\d[\d,]*) contribution", label)
+        if cid in cells and count:
+            cells[cid][1] = int(count.group(1).replace(",", ""))
+    days = sorted(tuple(cell) for cell in cells.values())
     if not days:
         raise RuntimeError("GitHub returned no public contribution-calendar data")
-    return sum(count for _, count in days), days
+    return days
 
 
 def get_stats():
     user = get_json(f"/users/{OWNER}")
     repos = get_json(f"/users/{OWNER}/repos?per_page=100&type=owner")
-    public_repos = [repo for repo in repos if not repo.get("fork") and not repo.get("private")]
-    stars = sum(int(repo.get("stargazers_count") or 0) for repo in public_repos)
+    public = [r for r in repos if not r.get("fork") and not r.get("private")]
     return {
         "followers": user["followers"],
-        "following": user["following"],
-        "repos": len(public_repos),
-        "stars": stars,
-        "starred": 0,
-        "repo_names": [repo["name"] for repo in public_repos],
+        "repos": len(public),
+        "stars": sum(int(r.get("stargazers_count") or 0) for r in public),
+        "repo_names": [r["name"] for r in public],
     }
 
 
@@ -87,194 +126,119 @@ def get_languages(stats):
     return totals
 
 
-def esc(s):
-    return (s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
-
-
-# ---------------------------------------------------------------------------
-# Card 1: contribution activity (52-week heatmap from live GitHub data)
-# ---------------------------------------------------------------------------
-def contribution_color(count, maximum):
-    if count == 0:
-        return "#102039"
-    ratio = count / maximum
-    if ratio <= 0.25:
-        return "#0e7490"
-    if ratio <= 0.5:
-        return "#0891b2"
-    if ratio <= 0.75:
-        return "#22d3ee"
-    return "#4ade80"
-
-
-def longest_streak(counts):
-    best = current = 0
+def best_streak(counts):
+    best = run = 0
     for count in counts:
-        current = current + 1 if count else 0
-        best = max(best, current)
+        run = run + 1 if count else 0
+        best = max(best, run)
     return best
 
 
-def render_activity(total, days):
-    weeks = [days[index:index + 7] for index in range(0, len(days), 7)]
-    counts = [count for _, count in days]
-    maximum = max(counts, default=1)
-    active_days = sum(count > 0 for count in counts)
-    month_labels = []
-    cells = []
-
-    for week_index, week in enumerate(weeks):
-        x = 118 + week_index * 14
-        for day_index, (day_string, count) in enumerate(week):
-            day = date.fromisoformat(day_string)
-            y = 94 + day_index * 16
-            if day.day <= 7 and (not month_labels or month_labels[-1] != day.strftime("%b")):
-                month_labels.append(day.strftime("%b"))
-                cells.append(
-                    f'<text x="{x}" y="82" font-family="\'JetBrains Mono\',monospace" '
-                    f'font-size="10" fill="#64748b">{day.strftime("%b")}</text>'
-                )
-            cells.append(
-                f'<rect x="{x}" y="{y}" width="11" height="11" rx="3" '
-                f'fill="{contribution_color(count, maximum)}">'
-                f'<title>{day_string}: {count} contribution{("s" if count != 1 else "")}</title></rect>'
-            )
-
-    synced_at = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    start, end = days[0][0], days[-1][0]
-    return f'''<svg width="900" height="250" viewBox="0 0 900 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GitHub contribution activity for the last 52 weeks">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#06101f"/>
-      <stop offset="100%" stop-color="#0b1224"/>
-    </linearGradient>
-    <linearGradient id="neon" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#22d3ee"/>
-      <stop offset="100%" stop-color="#4ade80"/>
-    </linearGradient>
-  </defs>
-  <rect width="900" height="250" rx="16" fill="url(#bg)" stroke="url(#neon)" stroke-opacity="0.5" stroke-width="1.5"/>
-  <text x="24" y="30" font-family="'JetBrains Mono','Fira Code',monospace" font-size="12" fill="#94a3b8" letter-spacing="1.2">ACTIVITY PULSE  //  LAST 52 WEEKS</text>
-  <text x="876" y="30" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#64748b">SYNC {synced_at}</text>
-  <line x1="24" y1="46" x2="876" y2="46" stroke="#1e293b"/>
-  <text x="24" y="70" font-family="'JetBrains Mono',monospace" font-size="17" font-weight="700" fill="#4ade80">{total}</text>
-  <text x="24" y="86" font-family="'JetBrains Mono',monospace" font-size="10" fill="#64748b">CONTRIBUTIONS</text>
-  <text x="24" y="122" font-family="'JetBrains Mono',monospace" font-size="17" font-weight="700" fill="#22d3ee">{active_days}</text>
-  <text x="24" y="138" font-family="'JetBrains Mono',monospace" font-size="10" fill="#64748b">ACTIVE DAYS</text>
-  <text x="24" y="174" font-family="'JetBrains Mono',monospace" font-size="17" font-weight="700" fill="#c4b5fd">{longest_streak(counts)}d</text>
-  <text x="24" y="190" font-family="'JetBrains Mono',monospace" font-size="10" fill="#64748b">BEST STREAK</text>
-  <text x="98" y="103" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#64748b">Sun</text>
-  <text x="98" y="135" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#64748b">Tue</text>
-  <text x="98" y="167" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#64748b">Thu</text>
-{chr(10).join(cells)}
-  <text x="118" y="228" font-family="'JetBrains Mono',monospace" font-size="10" fill="#64748b">{start} → {end}</text>
-  <text x="876" y="228" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#64748b">LESS</text>
-  <rect x="816" y="219" width="10" height="10" rx="3" fill="#102039"/>
-  <rect x="830" y="219" width="10" height="10" rx="3" fill="#0e7490"/>
-  <rect x="844" y="219" width="10" height="10" rx="3" fill="#0891b2"/>
-  <rect x="858" y="219" width="10" height="10" rx="3" fill="#22d3ee"/>
-  <rect x="872" y="219" width="10" height="10" rx="3" fill="#4ade80"/>
-</svg>
-'''
-
-
 # ---------------------------------------------------------------------------
-# Card 2: stats overview
+# Rendering
 # ---------------------------------------------------------------------------
-def render_stats(s):
-    rows = [("Public Repos", s["repos"], "#22d3ee"),
-            ("Followers", s["followers"], "#4ade80"),
-            ("Following", s["following"], "#f472b6"),
-            ("Stars Earned", s["stars"], "#a78bfa"),
-            ("Starred", s["starred"], "#f7df1e")]
-    y = 124
-    body = ""
-    for label, val, color in rows:
-        body += f'''  <text x="20" y="{y}" font-family="'JetBrains Mono',monospace" font-size="12" fill="#94a3b8">{label}</text>
-  <text x="380" y="{y}" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="15" font-weight="700" fill="{color}">{val}</text>
-  <line x1="20" y1="{y+10}" x2="380" y2="{y+10}" stroke="#13233b" stroke-width="1"/>
-'''
-        y += 22
-    return f'''<svg width="400" height="{y-14}" viewBox="0 0 400 {y-14}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GitHub stats overview">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#06101f"/>
-      <stop offset="100%" stop-color="#0b1224"/>
-    </linearGradient>
-    <linearGradient id="neon" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#22d3ee"/>
-      <stop offset="100%" stop-color="#4ade80"/>
-    </linearGradient>
-    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
-      <feGaussianBlur stdDeviation="2.5" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-  </defs>
-  <rect width="400" height="{y-14}" rx="14" fill="url(#bg)" stroke="url(#neon)" stroke-opacity="0.5" stroke-width="1.5"/>
-  <text x="20" y="28" font-family="'JetBrains Mono','Fira Code',monospace" font-size="12" fill="#94a3b8" letter-spacing="1">isaac@github :: stats</text>
-  <line x1="20" y1="40" x2="380" y2="40" stroke="#1e293b" stroke-width="1"/>
-  <circle cx="40" cy="76" r="20" fill="#04101c" stroke="#4ade80" stroke-opacity="0.5" stroke-width="1.5"/>
-  <text x="40" y="82" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="15" font-weight="700" fill="#4ade80" filter="url(#glow)">YS</text>
-  <text x="72" y="70" font-family="'Segoe UI',system-ui,sans-serif" font-size="16" font-weight="700" fill="#e2e8f0">Yinan SUN</text>
-  <text x="72" y="88" font-family="'JetBrains Mono',monospace" font-size="11" fill="#64748b">@isaac-sun · UNNC</text>
-{body}</svg>
-'''
+def svg(w, h, label, body):
+    return (f'<svg width="{w}" height="{h}" viewBox="0 0 {w} {h}" xmlns="http://www.w3.org/2000/svg" '
+            f'role="img" aria-label="{label}">\n{body}\n</svg>\n')
 
 
-# ---------------------------------------------------------------------------
-# Card 3: top languages (real byte breakdown)
-# ---------------------------------------------------------------------------
-def render_languages(totals):
-    items = sorted(totals.items(), key=lambda kv: kv[1], reverse=True)[:7]
-    grand = sum(v for _, v in items) or 1
-    row_h = 26
-    top = 52
-    h = top + len(items) * row_h + 14
-    body = ""
-    y = top
-    for name, bytes_ in items:
-        pct = bytes_ / grand * 100
-        color = LANG_COLORS.get(name, "#64748b")
-        w = max(6, pct / 100 * 340)
-        body += f'''  <text x="20" y="{y+4}" font-family="'JetBrains Mono',monospace" font-size="12" fill="#e2e8f0">{esc(name)}</text>
-  <rect x="20" y="{y+10}" width="340" height="8" rx="4" fill="#0b1626"/>
-  <rect x="20" y="{y+10}" width="{w:.1f}" height="8" rx="4" fill="{color}"/>
-  <text x="372" y="{y+4}" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" fill="{color}">{pct:.1f}%</text>
-'''
-        y += row_h
-    return f'''<svg width="400" height="{h}" viewBox="0 0 400 {h}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Top languages">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#06101f"/>
-      <stop offset="100%" stop-color="#0b1224"/>
-    </linearGradient>
-    <linearGradient id="neon" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#22d3ee"/>
-      <stop offset="100%" stop-color="#4ade80"/>
-    </linearGradient>
-  </defs>
-  <rect width="400" height="{h}" rx="14" fill="url(#bg)" stroke="url(#neon)" stroke-opacity="0.5" stroke-width="1.5"/>
-  <text x="20" y="28" font-family="'JetBrains Mono','Fira Code',monospace" font-size="12" fill="#94a3b8" letter-spacing="1">isaac@github :: languages</text>
-  <line x1="20" y1="40" x2="380" y2="40" stroke="#1e293b" stroke-width="1"/>
-{body}</svg>
-'''
+def window(x, y, w, h, t, title):
+    """An RPG menu window with a title tab sitting on its top border."""
+    return "\n".join([
+        f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{t["panel"]}" stroke="{t["frame"]}" stroke-width="4" {CRISP}/>',
+        f'<rect x="{x + 8}" y="{y + 8}" width="{w - 16}" height="{h - 16}" fill="none" stroke="{t["frame"]}" stroke-opacity="0.35" stroke-width="2" {CRISP}/>',
+        f'<rect x="{x + 24}" y="{y - 14}" width="{width(title, 3) + 24}" height="28" fill="{t["panel"]}" stroke="{t["frame"]}" stroke-width="4" {CRISP}/>',
+        px(x + 36, y - 10, title, 3, t["yellow"]),
+    ])
+
+
+def render_header(total, t):
+    w, h = 1200, 380
+    b = [f'<rect width="{w}" height="{h}" fill="{t["bg"]}"/>']
+    stars = [(640, 60), (720, 150), (1130, 90), (980, 40), (600, 250), (1150, 230), (700, 320), (640, 180)]
+    for i, (sx, sy) in enumerate(stars):
+        b.append(f'<rect x="{sx}" y="{sy}" width="6" height="6" fill="{t["star"]}" {CRISP}>'
+                 f'<animate attributeName="opacity" values="1;0.2;1" dur="{1.2 + i * 0.3:.1f}s" repeatCount="indefinite" calcMode="discrete"/></rect>')
+    b += [
+        f'<rect x="6" y="6" width="{w - 12}" height="{h - 12}" fill="none" stroke="{t["frame"]}" stroke-width="6" {CRISP}/>',
+        f'<rect x="18" y="18" width="{w - 36}" height="{h - 36}" fill="none" stroke="{t["frame"]}" stroke-opacity="0.3" stroke-width="2" {CRISP}/>',
+        px(48, 42, "PLAYER 1", 3, t["yellow"]),
+        px(w - 48, 42, f"HI-SCORE {total:06d}", 3, t["text"], "end"),
+        px(54, 102, "YINAN SUN", 10, t["shadow"]),
+        px(48, 96, "YINAN SUN", 10, t["text"]),
+        px(48, 206, "CLASS", 3, t["muted"]), px(200, 206, "FL RESEARCHER", 3, t["text"]),
+        px(48, 242, "GUILD", 3, t["muted"]), px(200, 242, "UNIV. OF NOTTINGHAM", 3, t["text"]),
+        px(48, 278, "HP", 3, t["muted"]), px(200, 278, "♥♥♥♥♡", 3, t["heart"]),
+        f'<g>{px(48, 324, "▶ PRESS START", 3, t["green"])}'
+        f'<animate attributeName="opacity" values="1;0" dur="1.1s" calcMode="discrete" repeatCount="indefinite"/></g>',
+    ]
+    for i in range(10):  # brick platform
+        b.append(f'<rect x="{840 + i * 30}" y="300" width="30" height="40" fill="{t["brick"]}" stroke="{t["mortar"]}" stroke-width="3" {CRISP}/>')
+    b.append(f'<g>{sprite(900, 108, HERO, HERO_PALETTE, 12)}'
+             f'<animateTransform attributeName="transform" type="translate" values="0 0;0 -8;0 0" dur="1.2s" calcMode="discrete" repeatCount="indefinite"/></g>')
+    b += [f'<rect x="1070" y="96" width="92" height="44" fill="{t["panel"]}" stroke="{t["frame"]}" stroke-width="4" {CRISP}/>',
+          f'<rect x="1062" y="136" width="12" height="12" fill="{t["frame"]}" {CRISP}/>',
+          px(1116, 108, "HI!", 3, t["text"], "middle")]
+    return svg(w, h, "Player 1: Yinan Sun — class: FL researcher, guild: University of Nottingham", "\n".join(b))
+
+
+def render_status(days, stats, langs, t):
+    w, h = 1200, 600
+    counts = [count for _, count, _ in days]
+    total = sum(counts)
+    b = [window(20, 24, 560, 300, t, "STATUS")]
+    rows = [("XP", f"{total}", t["yellow"]),
+            ("QUESTS", f"{stats['repos']}", t["text"]),
+            ("STARS", f"★ {stats['stars']}", t["yellow"]),
+            ("ALLIES", f"{stats['followers']}", t["text"]),
+            ("BEST STREAK", f"{best_streak(counts)} DAYS", t["green"])]
+    for i, (key, value, color) in enumerate(rows):
+        y = 70 + i * 48
+        b.append(px(52, y, key, 3, t["muted"]))
+        b.append(px(548, y, value, 3, color, "end"))
+
+    b.append(window(620, 24, 560, 300, t, "SKILLS"))
+    grand = sum(langs.values()) or 1
+    for i, (name, value) in enumerate(sorted(langs.items(), key=lambda kv: -kv[1])[:5]):
+        y = 70 + i * 48
+        pct = value / grand * 100
+        filled = max(1, round(pct / 10))
+        b.append(px(652, y, SHORT_NAMES.get(name, name), 3, t["text"]))
+        for s in range(10):
+            b.append(f'<rect x="{850 + s * 22}" y="{y - 2}" width="18" height="24" fill="{t["green"] if s < filled else t["seg_off"]}" {CRISP}/>')
+        b.append(px(1148, y, f"{pct:.0f}%", 3, t["muted"], "end"))
+
+    b.append(window(20, 370, 1160, 210, t, "QUEST LOG - 52 WEEKS"))
+    offset = (date.fromisoformat(days[0][0]).weekday() + 1) % 7  # Sunday-first rows, like GitHub
+    for index, (day, count, level) in enumerate(days):
+        col, row = divmod(index + offset, 7)
+        b.append(f'<rect x="{123 + col * 18}" y="{410 + row * 20}" width="16" height="16" fill="{t["heat"][level]}" {CRISP}>'
+                 f'<title>{day}: {count} contribution{"" if count == 1 else "s"}</title></rect>')
+    for row, label in ((1, "M"), (3, "W"), (5, "F")):
+        b.append(px(86, 412 + row * 20, label, 2, t["muted"]))
+    return svg(w, h, f"Player stats: {total} XP (contributions), {stats['repos']} quests, {stats['stars']} stars", "\n".join(b))
+
+
+def write(name, theme, content):
+    with open(os.path.join(ASSETS, f"{name}-{theme}.svg"), "w") as handle:
+        handle.write(content)
 
 
 def main():
     print("Fetching contribution calendar...")
-    total, days = get_contrib()
+    days = get_contrib()
     print("Fetching stats...")
     stats = get_stats()
     print("Fetching language breakdown...")
     langs = get_languages(stats)
 
-    import os
     os.makedirs(ASSETS, exist_ok=True)
-    open(f"{ASSETS}/activity-graph.svg", "w").write(render_activity(total, days))
-    open(f"{ASSETS}/stats-overview.svg", "w").write(render_stats(stats))
-    open(f"{ASSETS}/stats-languages.svg", "w").write(render_languages(langs))
-    print(f"Wrote 3 cards. total_contrib={total}, repos={stats['repos']}, "
-          f"stars={stats['stars']}, langs={len(langs)}")
+    total = sum(count for _, count, _ in days)
+    for theme, t in THEMES.items():
+        write("header", theme, render_header(total, t))
+        write("status", theme, render_status(days, stats, langs, t))
+    print(f"Wrote {2 * len(THEMES)} images. contributions={total}, "
+          f"repos={stats['repos']}, stars={stats['stars']}, langs={len(langs)}")
 
 
 if __name__ == "__main__":

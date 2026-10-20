@@ -1,101 +1,33 @@
-<div align="center">
-  <img src="./assets/profile-header.svg" width="100%" alt="Yinan Sun — AI systems and federated learning" />
-</div>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/header-dark.svg" />
+  <img src="./assets/header-light.svg" width="100%" alt="Player 1: Yinan Sun — class: FL researcher, guild: University of Nottingham" />
+</picture>
 
-<div align="center">
-  <sub><b>Computer Science + AI @ UoN </b> &nbsp;•&nbsp; Federated Learning &nbsp;•&nbsp; AI Systems &nbsp;•&nbsp; Open Source</sub>
-</div>
+<p align="center">▶ <a href="https://isaac-sun.github.io"><b>WEBSITE</b></a> &nbsp;&nbsp; ▶ <a href="https://www.linkedin.com/in/isaac-sun/"><b>LINKEDIN</b></a> &nbsp;&nbsp; ▶ <a href="mailto:scyys25@nottingham.edu.cn"><b>EMAIL</b></a></p>
 
-<br />
+### ▶ STAGE SELECT
 
-<div align="center">
-  <a href="mailto:scyys25@nottingham.edu.cn"><img src="https://img.shields.io/badge/Email-scyys25%40nottingham.edu.cn-0B1220?style=for-the-badge&logo=gmail&logoColor=4ADE80&labelColor=020617" alt="Email" /></a>
-  <a href="https://www.linkedin.com/in/isaac-sun/"><img src="https://img.shields.io/badge/LinkedIn-Yinan_SUN-0B1220?style=for-the-badge&logo=linkedin&logoColor=22D3EE&labelColor=020617" alt="LinkedIn" /></a>
-  <a href="https://isaac-sun.github.io"><img src="https://img.shields.io/badge/Website-isaac--sun.github.io-0B1220?style=for-the-badge&logo=githubpages&logoColor=F472B6&labelColor=020617" alt="Personal website" /></a>
-</div>
+| Stage | Quest | Loot |
+| :-: | :-- | :-- |
+| **1-1** | **[fedfree](https://github.com/isaac-sun/fedfree)**<br />Unmask free-riders hiding inside a federation, using per-class Shapley values. | `Python` `PyTorch` |
+| **1-2** | **[chest-xray-federated-learning](https://github.com/isaac-sun/chest-xray-federated-learning)**<br />Train a pneumonia detector two ways — centralized and federated — and compare the loot. | `Python` `PyTorch` |
+| **1-3** | **[omp-api-manager](https://github.com/isaac-sun/omp-api-manager)**<br />Tame a whole fleet of AI providers from one local-first macOS app. | `Swift` `SwiftUI` |
+| **1-4** | **[BookVault](https://github.com/isaac-sun/BookVault)**<br />Keep a bookstore's inventory in order from the terminal, in plain C. | `C` `CLI` |
 
-<br />
+<sub>Bonus levels → <a href="https://github.com/isaac-sun?tab=repositories">all repositories</a> · <a href="https://github.com/isaac-sun/cs-ai-learning-notes">cs-ai-learning-notes</a></sub>
 
-<div align="center">
-  <img src="https://komarev.com/ghpvc/?username=isaac-sun&style=for-the-badge&color=22d3ee&label=Profile+Views" alt="Profile views" />
-  <img src="https://img.shields.io/github/followers/isaac-sun?style=for-the-badge&logo=github&label=Followers&color=4ade80&labelColor=020617" alt="GitHub followers" />
-  <img src="https://img.shields.io/github/stars/isaac-sun?style=for-the-badge&logo=github&label=Stars&color=a78bfa&labelColor=020617&affiliations=OWNER" alt="GitHub stars" />
-</div>
+### ▶ PLAYER STATS
 
-<br />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/status-dark.svg" />
+  <img src="./assets/status-light.svg" width="100%" alt="Player stats: contributions as XP, repositories as quests, stars, followers, top languages and a 52-week contribution log" />
+</picture>
 
-## `cat profile.toml`
+### ▶ INVENTORY
 
-```toml
-name       = "Yinan SUN (isaac)"
-location   = "Nottingham, United Kingdom"
-education  = "Computer Science + Artificial Intelligence, UoN"
-focus      = ["Federated Learning", "AI Systems", "ML from scratch"]
-currently  = "Open to research collaboration and internships"
-```
+`Python` `PyTorch` `Jupyter` `LaTeX` `C` `Swift` `TypeScript` `SQL` `Git` `Docker` `Linux`
 
-I study how learning systems can stay useful when data and compute are distributed. I enjoy turning papers into reproducible experiments, then carrying the same care into developer-facing tools.
+### ▶ CURRENT QUEST
 
-<img src="./assets/neon-divider.svg" width="100%" alt="" />
-
-## `featured --list`
-
-| Project | What it is | Stack |
-| :--- | :--- | :--- |
-| [**omp-api-manager**](https://github.com/isaac-sun/omp-api-manager) | Local-first macOS app for AI provider management, localhost gateway routing, and private usage tracking | Swift · SwiftUI |
-| [**fedfree**](https://github.com/isaac-sun/fedfree) | Two-stage free-rider detection in federated learning via per-class Shapley values | Python · PyTorch |
-| [**chest-xray-federated-learning**](https://github.com/isaac-sun/chest-xray-federated-learning) | Centralized vs. federated pneumonia classification on chest X-rays | Python · PyTorch |
-| [**BookVault**](https://github.com/isaac-sun/BookVault) | Terminal bookstore inventory CLI with binary persistence | C |
-
-<sub>Everything else → [github.com/isaac-sun?tab=repositories](https://github.com/isaac-sun?tab=repositories)</sub>
-
-<img src="./assets/neon-divider.svg" width="100%" alt="" />
-
-## `signal --live`
-
-<p><sub>These cards query GitHub’s API and are regenerated by GitHub Actions every day at <b>02:13 CST</b>. They are live data, not screenshots.</sub></p>
-
-<div align="center">
-  <img height="200" src="./assets/stats-overview.svg" alt="Live GitHub profile statistics" />
-  <img height="200" src="./assets/stats-languages.svg" alt="Live language breakdown from public repositories" />
-</div>
-
-<br />
-
-<div align="center">
-  <img src="./assets/activity-graph.svg" width="100%" alt="Live 52-week GitHub contribution heatmap" />
-</div>
-
-<img src="./assets/neon-divider.svg" width="100%" alt="" />
-
-## `stack --current`
-
-<div align="center">
-  <img src="https://img.shields.io/badge/Python-020617?style=for-the-badge&logo=python&logoColor=4ADE80" alt="Python" />
-  <img src="https://img.shields.io/badge/PyTorch-020617?style=for-the-badge&logo=pytorch&logoColor=EE4C2C" alt="PyTorch" />
-  <img src="https://img.shields.io/badge/C-020617?style=for-the-badge&logo=c&logoColor=22D3EE" alt="C" />
-  <img src="https://img.shields.io/badge/JavaScript-020617?style=for-the-badge&logo=javascript&logoColor=F7DF1E" alt="JavaScript" />
-  <img src="https://img.shields.io/badge/TypeScript-020617?style=for-the-badge&logo=typescript&logoColor=3178C6" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/SQL-020617?style=for-the-badge&logo=sqlite&logoColor=A78BFA" alt="SQL" />
-  <img src="https://img.shields.io/badge/LaTeX-020617?style=for-the-badge&logo=latex&logoColor=E2E8F0" alt="LaTeX" />
-  <img src="https://img.shields.io/badge/Docker-020617?style=for-the-badge&logo=docker&logoColor=2496ED" alt="Docker" />
-  <img src="https://img.shields.io/badge/Linux-020617?style=for-the-badge&logo=linux&logoColor=FCC624" alt="Linux" />
-</div>
-
-<br />
-
-## `contrib --animate`
-
-<div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/isaac-sun/isaac-sun/output/github-contribution-grid-snake-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/isaac-sun/isaac-sun/output/github-contribution-grid-snake.svg" />
-    <img alt="Animated GitHub contribution snake" src="https://raw.githubusercontent.com/isaac-sun/isaac-sun/output/github-contribution-grid-snake.svg" width="92%" />
-  </picture>
-</div>
-
-<br />
-
-<div align="center">
-  <img src="./assets/profile-footer.svg" width="100%" alt="Terminal exit footer" />
-</div>
+> Studying CS + AI at the University of Nottingham and running new federated-learning experiments.<br />
+> **Party wanted:** open to research collaboration & internships — [send a message](mailto:scyys25@nottingham.edu.cn).

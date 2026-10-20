@@ -29,14 +29,14 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Generate daily GitHub data cards
+      - name: Generate pixel profile images
         run: python3 scripts/gen_cards.py
 
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add assets/stats-overview.svg assets/stats-languages.svg assets/activity-graph.svg
+          git add assets/header-*.svg assets/status-*.svg
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
